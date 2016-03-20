@@ -1,28 +1,28 @@
 
 
-#include "../Urho3D.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
 #include "EditorSelection.h"
-#include "../Core/CoreEvents.h"
-#include "../UI/DropDownList.h"
-#include "../Engine/EngineEvents.h"
-#include "../UI/Font.h"
-#include "../Graphics/Graphics.h"
-#include "../Graphics/GraphicsEvents.h"
-#include "../Input/Input.h"
-#include "../Input/InputEvents.h"
-#include "../IO/IOEvents.h"
-#include "../UI/LineEdit.h"
-#include "../UI/ListView.h"
-#include "../IO/Log.h"
-#include "../Resource/ResourceCache.h"
-#include "../UI/ScrollBar.h"
-#include "../UI/Text.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../Scene/Scene.h"
-#include "../Graphics/Texture.h"
-#include "../Graphics/Texture2D.h"
+#include <Urho3D/Core/CoreEvents.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Engine/EngineEvents.h>
+#include <Urho3D/UI/Font.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Graphics/GraphicsEvents.h>
+#include <Urho3D/Input/Input.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/IO/IOEvents.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/IO/Log.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/UI/ScrollBar.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/Graphics/Texture.h>
+#include <Urho3D/Graphics/Texture2D.h>
 
 #include "UIGlobals.h"
 #include "MenuBarUI.h"
@@ -31,7 +31,7 @@
 #include "HierarchyWindow.h"
 #include "AttributeInspector.h"
 #include "ResourcePicker.h"
-#include "../Graphics/Camera.h"
+#include <Urho3D/Graphics/Camera.h>
 #include "Editor.h"
 
 namespace Urho3D

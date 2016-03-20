@@ -23,56 +23,56 @@
 #pragma once
 
 
-#include "../UI/UIElement.h"
-#include "../Core/Attribute.h"
+#include <Urho3d/UI/UIElement.h>
+#include <Urho3d/Core/Attribute.h>
 
 namespace Urho3D
 {
 
 	/// Attribute Edit Event
-	EVENT(AEE_BOOLVARCHANGED, BoolVarChanged)
+	URHO3D_EVENT(AEE_BOOLVARCHANGED, BoolVarChanged)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_STRINGVARCHANGED, StringVarChanged)
+	URHO3D_EVENT(AEE_STRINGVARCHANGED, StringVarChanged)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_NUMBERVARCHANGED, NumberVarChanged)
+	URHO3D_EVENT(AEE_NUMBERVARCHANGED, NumberVarChanged)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_ENUMVARCHANGED, EnumVarChanged)
+	URHO3D_EVENT(AEE_ENUMVARCHANGED, EnumVarChanged)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_RESREFVARCHANGED, ResourceRefVarChanged)
+	URHO3D_EVENT(AEE_RESREFVARCHANGED, ResourceRefVarChanged)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_PICKRESOURCE, PickResource)
+	URHO3D_EVENT(AEE_PICKRESOURCE, PickResource)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_OPENRESOURCE, OpenResource)
+	URHO3D_EVENT(AEE_OPENRESOURCE, OpenResource)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_EDITRESOURCE, EditResource)
+	URHO3D_EVENT(AEE_EDITRESOURCE, EditResource)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 
-	EVENT(AEE_TESTRESOURCE, TestResource)
+	URHO3D_EVENT(AEE_TESTRESOURCE, TestResource)
 	{
-		PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
+		URHO3D_PARAM(P_ATTEDIT, AttributeEdit);              // BasicAttributeUI pointer
 	}
 	
 

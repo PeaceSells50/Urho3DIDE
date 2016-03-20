@@ -1,32 +1,32 @@
-#include "../Urho3D.h"
-#include "../Core/Context.h"
-#include "../Graphics/Texture2D.h"
-#include "../Resource/ResourceCache.h"
-#include "../Math/Color.h"
-#include "../UI/UIElement.h"
-#include "../UI/Window.h"
-#include "../Graphics/Graphics.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../IO/FileSystem.h"
-#include "../UI/ListView.h"
-#include "../UI/Text.h"
-#include "../UI/Button.h"
-#include "../Resource/XMLFile.h"
-#include "../Resource/ResourceCache.h"
-#include "../Graphics/Texture2D.h"
-#include "../UI/BorderImage.h"
-#include "../Graphics/Texture.h"
-#include "../Scene/Serializable.h"
-#include "../Container/Str.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/Graphics/Texture2D.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Math/Color.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Graphics/Texture2D.h>
+#include <Urho3D/UI/BorderImage.h>
+#include <Urho3D/Graphics/Texture.h>
+#include <Urho3D/Scene/Serializable.h>
+#include <Urho3D/Container/Str.h>
 
 #include "TemplateManager.h"
-#include "../Resource/XMLElement.h"
-#include "../IO/Log.h"
+#include <Urho3D/Resource/XMLElement.h>
+#include <Urho3D/IO/Log.h>
 #include "ProjectManager.h"
-#include "../UI/ScrollView.h"
-#include "../UI/Font.h"
-#include "../UI/CheckBox.h"
+#include <Urho3D/UI/ScrollView.h>
+#include <Urho3D/UI/Font.h>
+#include <Urho3D/UI/CheckBox.h>
 
 
 namespace Urho3D
@@ -60,7 +60,7 @@ namespace Urho3D
 		XMLFile* templatesXML =  cache->GetResource<XMLFile>("Templates/Templates.xml");
 		if (!templatesXML)
 		{
-			LOGERROR("Could not find Templates");
+			URHO3D_LOGERROR("Could not find Templates");
 			return false;
 		}
 
@@ -68,14 +68,14 @@ namespace Urho3D
 
 		if (!root)
 		{
-			LOGERROR("Could not find Templates");
+			URHO3D_LOGERROR("Could not find Templates");
 			return false;
 		}
 
 		XMLElement temp = root.GetChild("Template");
 		if (!temp)
 		{
-			LOGERROR("No Templates are defined in Templates/Templates.xml");
+			URHO3D_LOGERROR("No Templates are defined in Templates/Templates.xml");
 			return false;
 		}
 
@@ -171,7 +171,7 @@ namespace Urho3D
 			nametile->SetFont(font,12);
 			nametile->SetText(templateProjects_[i]->name_);
 
-			SubscribeToEvent(panel, E_RELEASED, HANDLER(TemplateManager, HandleMouseClick));
+			SubscribeToEvent(panel, E_RELEASED, URHO3D_HANDLER(TemplateManager, HandleMouseClick));
 		}
 
 		tempview->AddChild(container);

@@ -3,9 +3,9 @@
 
 
 
-#include "../Core/Object.h"
+#include <Urho3D/Core/Object.h>
 #include "EPScene3D.h"
-#include "../Math/Ray.h"
+#include <Urho3D/Math/Ray.h>
 
 
 
@@ -21,7 +21,7 @@ namespace Urho3D
 
 	class GizmoAxis : public Object
 	{
-		OBJECT(GizmoAxis);
+		URHO3D_OBJECT(GizmoAxis, Object);
 	public:
 		/// Construct.
 		GizmoAxis(Context* context);
@@ -44,7 +44,7 @@ namespace Urho3D
 
 	class GizmoScene3D : public Object
 	{
-		OBJECT(GizmoScene3D);
+		URHO3D_OBJECT(GizmoScene3D, Object);
 	public:
 		/// Construct.
 		GizmoScene3D(Context* context, EPScene3D* epScene3D);

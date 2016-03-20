@@ -1,46 +1,46 @@
-#include "../Urho3D.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
 #include "ResourceBrowser.h"
-#include "../Resource/ResourceCache.h"
-#include "../IO/FileSystem.h"
-#include "../IO/File.h"
-#include "../Resource/XMLFile.h"
-#include "../Resource/XMLElement.h"
-#include "../UI/UI.h"
-#include "../UI/Window.h"
-#include "../UI/Text.h"
-#include "../UI/LineEdit.h"
-#include "../UI/ListView.h"
-#include "../Scene/Scene.h"
-#include "../Physics/PhysicsWorld.h"
-#include "../Scene/Node.h"
-#include "../Graphics/Zone.h"
-#include "../Graphics/Camera.h"
-#include "../Graphics/Light.h"
-#include "../UI/View3D.h"
-#include "../Math/Vector3.h"
-#include "../UI/CheckBox.h"
-#include "../UI/UIEvents.h"
-#include "../Graphics/Model.h"
-#include "../Graphics/StaticModel.h"
-#include "../Graphics/Material.h"
-#include "../Resource/Image.h"
-#include "../Graphics/Texture2D.h"
-#include "../Resource/XMLFile.h"
-#include "../Graphics/ParticleEffect.h"
-#include "../Resource/Resource.h"
-#include "../IO/Deserializer.h"
-#include "../Scene/Serializable.h"
-#include "../IO/File.h"
-#include "../Graphics/Texture.h"
-#include "../Graphics/AnimatedModel.h"
-#include "../IO/Serializer.h"
-#include "../Graphics/ParticleEmitter.h"
-#include "../Math/BoundingBox.h"
-#include "../UI/UIElement.h"
-#include "../Resource/ResourceEvents.h"
-#include "../Graphics/Octree.h"
-#include "../Input/InputEvents.h"
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/IO/File.h>
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/Resource/XMLElement.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/Physics/PhysicsWorld.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Graphics/Zone.h>
+#include <Urho3D/Graphics/Camera.h>
+#include <Urho3D/Graphics/Light.h>
+#include <Urho3D/UI/View3D.h>
+#include <Urho3D/Math/Vector3.h>
+#include <Urho3D/UI/CheckBox.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/Graphics/Model.h>
+#include <Urho3D/Graphics/StaticModel.h>
+#include <Urho3D/Graphics/Material.h>
+#include <Urho3D/Resource/Image.h>
+#include <Urho3D/Graphics/Texture2D.h>
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/Graphics/ParticleEffect.h>
+#include <Urho3D/Resource/Resource.h>
+#include <Urho3D/IO/Deserializer.h>
+#include <Urho3D/Scene/Serializable.h>
+#include <Urho3D/IO/File.h>
+#include <Urho3D/Graphics/Texture.h>
+#include <Urho3D/Graphics/AnimatedModel.h>
+#include <Urho3D/IO/Serializer.h>
+#include <Urho3D/Graphics/ParticleEmitter.h>
+#include <Urho3D/Math/BoundingBox.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/Resource/ResourceEvents.h>
+#include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Input/InputEvents.h>
 #include "EditorView.h"
 #include "MenuBarUI.h"
 #include "UIGlobals.h"
@@ -655,7 +655,7 @@ namespace Urho3D
 		EditorView* editorView = GetSubsystem<EditorView>();
 		Menu* sceneMenu_ = editorView->GetGetMenuBar()->CreateMenu("Window");
 		editorView->GetGetMenuBar()->CreateMenuItem("Window", "Resource Browser", A_SHOWRESOURCE_VAR);
-		SubscribeToEvent(editorView->GetGetMenuBar(), E_MENUBAR_ACTION, HANDLER(ResourceBrowser, HandleMenuBarAction));
+		SubscribeToEvent(editorView->GetGetMenuBar(), E_MENUBAR_ACTION, URHO3D_HANDLER(ResourceBrowser, HandleMenuBarAction));
 	}
 
 	void ResourceBrowser::Update()
@@ -1201,18 +1201,15 @@ namespace Urho3D
 		EditorView* editorView = GetSubsystem<EditorView>();
 		if (editorView)
 			editorView->GetLeftFrame()->AddTab("Resources", browserWindow);
-		
-			
-		
-		
-		SubscribeToEvent(browserWindow->GetChild("CloseButton", true), E_RELEASED, HANDLER(ResourceBrowser, HideResourceBrowserWindow));
-		SubscribeToEvent(browserWindow->GetChild("RescanButton", true), E_RELEASED, HANDLER(ResourceBrowser, HandleRescanResourceBrowserClick));
-		SubscribeToEvent(browserWindow->GetChild("FilterButton", true), E_RELEASED, HANDLER(ResourceBrowser, ToggleResourceFilterWindow));
-		SubscribeToEvent(browserDirList, E_SELECTIONCHANGED, HANDLER(ResourceBrowser, HandleResourceBrowserDirListSelectionChange));
-		SubscribeToEvent(browserSearch, E_TEXTCHANGED, HANDLER(ResourceBrowser, HandleResourceBrowserSearchTextChange));
-		SubscribeToEvent(browserFileList, E_ITEMCLICKED, HANDLER(ResourceBrowser, HandleBrowserFileClick));
-		SubscribeToEvent(browserFileList, E_SELECTIONCHANGED, HANDLER(ResourceBrowser, HandleResourceBrowserFileListSelectionChange));
-		SubscribeToEvent(cache_, E_FILECHANGED, HANDLER(ResourceBrowser, HandleFileChanged));
+
+		SubscribeToEvent(browserWindow->GetChild("CloseButton", true), E_RELEASED, URHO3D_HANDLER(ResourceBrowser, HideResourceBrowserWindow));
+		SubscribeToEvent(browserWindow->GetChild("RescanButton", true), E_RELEASED, URHO3D_HANDLER(ResourceBrowser, HandleRescanResourceBrowserClick));
+		SubscribeToEvent(browserWindow->GetChild("FilterButton", true), E_RELEASED, URHO3D_HANDLER(ResourceBrowser, ToggleResourceFilterWindow));
+		SubscribeToEvent(browserDirList, E_SELECTIONCHANGED, URHO3D_HANDLER(ResourceBrowser, HandleResourceBrowserDirListSelectionChange));
+		SubscribeToEvent(browserSearch, E_TEXTCHANGED, URHO3D_HANDLER(ResourceBrowser, HandleResourceBrowserSearchTextChange));
+		SubscribeToEvent(browserFileList, E_ITEMCLICKED, URHO3D_HANDLER(ResourceBrowser, HandleBrowserFileClick));
+		SubscribeToEvent(browserFileList, E_SELECTIONCHANGED, URHO3D_HANDLER(ResourceBrowser, HandleResourceBrowserFileListSelectionChange));
+		SubscribeToEvent(cache_, E_FILECHANGED, URHO3D_HANDLER(ResourceBrowser, HandleFileChanged));
 	}
 
 	void ResourceBrowser::InitResourceBrowserPreview()
@@ -1253,7 +1250,7 @@ namespace Urho3D
 
 		resourcePreviewNode = resourcePreviewScene->CreateChild("PreviewNodeContainer");
 
-		SubscribeToEvent(resourceBrowserPreview, E_DRAGMOVE, HANDLER(ResourceBrowser, RotateResourceBrowserPreview));
+		SubscribeToEvent(resourceBrowserPreview, E_DRAGMOVE, URHO3D_HANDLER(ResourceBrowser, RotateResourceBrowserPreview));
 
 		RefreshBrowserPreview();
 	}
@@ -1288,8 +1285,8 @@ namespace Urho3D
 		file->resourceType == RESOURCE_TYPE_PREFAB
 		)
 	{
-		SubscribeToEvent(fileText, E_DRAGBEGIN, HANDLER(ResourceBrowser, HandleBrowserFileDragBegin));
-		SubscribeToEvent(fileText, E_DRAGEND, HANDLER(ResourceBrowser, HandleBrowserFileDragEnd));
+		SubscribeToEvent(fileText, E_DRAGBEGIN, URHO3D_HANDLER(ResourceBrowser, HandleBrowserFileDragBegin));
+		SubscribeToEvent(fileText, E_DRAGEND, URHO3D_HANDLER(ResourceBrowser, HandleBrowserFileDragEnd));
 	}
 	}
 
@@ -1329,9 +1326,9 @@ namespace Urho3D
 		CheckBox* toggleAllTypes = (CheckBox*)browserFilterWindow->GetChild("ToggleAllTypes", true);
 		CheckBox* toggleAllResourceDirs = (CheckBox*)browserFilterWindow->GetChild("ToggleAllResourceDirs", true);
 
-		SubscribeToEvent(toggleAllTypes, E_TOGGLED, HANDLER(ResourceBrowser, HandleResourceTypeFilterToggleAllTypesToggled));
-		SubscribeToEvent(toggleAllResourceDirs, E_TOGGLED, HANDLER(ResourceBrowser, HandleResourceDirFilterToggleAllTypesToggled));
-		SubscribeToEvent(browserFilterWindow->GetChild("CloseButton", true), E_RELEASED, HANDLER(ResourceBrowser, HandleHideResourceFilterWindow));
+		SubscribeToEvent(toggleAllTypes, E_TOGGLED, URHO3D_HANDLER(ResourceBrowser, HandleResourceTypeFilterToggleAllTypesToggled));
+		SubscribeToEvent(toggleAllResourceDirs, E_TOGGLED, URHO3D_HANDLER(ResourceBrowser, HandleResourceDirFilterToggleAllTypesToggled));
+		SubscribeToEvent(browserFilterWindow->GetChild("CloseButton", true), E_RELEASED, URHO3D_HANDLER(ResourceBrowser, HandleHideResourceFilterWindow));
 
 		int columns = 2;
 		UIElement* col1 = browserFilterWindow->GetChild("TypeFilterColumn1", true);
@@ -1368,7 +1365,7 @@ namespace Urho3D
 			checkbox->SetStyleAuto();
 			checkbox->SetVar(TEXT_VAR_RESOURCE_TYPE, i);
 			checkbox->SetChecked(true);
-			SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(ResourceBrowser, HandleResourceTypeFilterToggled));
+			SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(ResourceBrowser, HandleResourceTypeFilterToggled));
 
 			resourceTypeHolder->AddChild(checkbox);
 			resourceTypeHolder->AddChild(label);
@@ -1524,7 +1521,7 @@ namespace Urho3D
 			checkbox->SetStyleAuto();
 			checkbox->SetVar(TEXT_VAR_RESOURCE_DIR_ID, i);
 			checkbox->SetChecked(true);
-			SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(ResourceBrowser, HandleResourceDirFilterToggled));
+			SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(ResourceBrowser, HandleResourceDirFilterToggled));
 
 			resourceDirHolder->AddChild(checkbox);
 			resourceDirHolder->AddChild(label);

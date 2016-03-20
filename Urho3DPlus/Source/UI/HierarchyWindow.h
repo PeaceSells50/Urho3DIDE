@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include "../Urho3D.h"
-#include "../UI/Window.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/Core/Context.h>
 #include "Utils/Macros.h"
 #include "UIGlobals.h"
 
@@ -25,7 +25,7 @@ namespace Urho3D
 	/// \todo redirect Double/Click, SelectionChange  ... event  
 	class HierarchyWindow : public Window
 	{
-		OBJECT(HierarchyWindow);
+		URHO3D_OBJECT(HierarchyWindow, Window);
 	public:
 		/// Construct.
 		HierarchyWindow(Context* context);

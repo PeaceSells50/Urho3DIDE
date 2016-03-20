@@ -19,15 +19,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-#include "../Urho3D.h"
+#include <Urho3D/Urho3D.h>
 
-#include "../Core\Context.h"
-#include "../Core\Object.h"
+#include <Urho3D/Core\Context.h>
+#include <Urho3D/Core\Object.h>
 
 #include "ResourcePicker.h"
 #include "Utils/Helpers.h"
 
-#include "../DebugNew.h"
+#include <Urho3D/DebugNew.h>
 
 
 

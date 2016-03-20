@@ -1,8 +1,8 @@
 #pragma once
-#include "../Core/Object.h"
+#include <Urho3D/Core/Object.h>
 
-#include "../Container/Vector.h"
-#include "../Core/Variant.h"
+#include <Urho3D/Container/Vector.h>
+#include <Urho3D/Core/Variant.h>
 
 
 namespace Urho3D
@@ -36,7 +36,7 @@ namespace Urho3D
 	{
 		friend class Editor;
 
-		OBJECT(EditorData);
+		URHO3D_OBJECT(EditorData, Object);
 	public:
 		EditorData(Context* context, Editor* editor = NULL);
 		virtual ~EditorData();

@@ -8,9 +8,9 @@
  */
 
 #pragma once
-#include "..\Core\Object.h"
+#include <Urho3D/Core/Object.h>
 
-#include "..\Scene\Serializable.h"
+#include <Urho3D/Scene\Serializable.h>
 
 namespace Urho3D
 {
@@ -27,13 +27,13 @@ namespace Urho3D
 	const StringHash PROJECTINDEX_VAR("ProjectIndex");
 
 	/// ProjectManager Open Project.
-	EVENT(E_OPENPROJECT, OpenProject)
+	URHO3D_EVENT(E_OPENPROJECT, OpenProject)
 	{
 	}
 
 	class ProjectSettings : public Serializable
 	{
-		OBJECT(ProjectSettings);
+		URHO3D_OBJECT(ProjectSettings, Serializable);
 	public:
 		ProjectSettings(Context* context);
 		virtual ~ProjectSettings();
@@ -56,7 +56,7 @@ namespace Urho3D
 
 	class ProjectManager : public Object
 	{
-		OBJECT(ProjectManager);
+		URHO3D_OBJECT(ProjectManager, Object);
 	public:
 		ProjectManager(Context* context);
 		virtual ~ProjectManager();

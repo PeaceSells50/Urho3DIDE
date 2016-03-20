@@ -3,7 +3,7 @@
 
 
 
-#include "../Core/Object.h"
+#include <Urho3D/Core/Object.h>
 
 
 
@@ -101,7 +101,7 @@ namespace Urho3D
 
 	class ResourceBrowser : public Object
 	{
-		OBJECT(ResourceBrowser);
+		URHO3D_OBJECT(ResourceBrowser, Object);
 		friend class BrowserDir;
 		friend class BrowserFile;
 	public:

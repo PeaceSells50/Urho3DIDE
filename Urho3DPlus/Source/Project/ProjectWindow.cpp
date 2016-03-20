@@ -1,13 +1,13 @@
-#include "../Urho3D.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
 #include "ProjectWindow.h"
-#include "../UI/Window.h"
-#include "../Resource/XMLFile.h"
-#include "../Resource/ResourceCache.h"
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/Resource/ResourceCache.h>
 #include "ProjectManager.h"
-#include "../UI/ListView.h"
-#include "../UI/Text.h"
-#include "../IO/FileSystem.h"
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/IO/FileSystem.h>
 
 
 
@@ -63,7 +63,7 @@ namespace Urho3D
 
 		projectResList_ = dynamic_cast<ListView*>(projectwindow_->GetChild("ProjectResList", true));
 
-		SubscribeToEvent(E_OPENPROJECT, HANDLER(ProjectWindow, HandleOpenProject));
+		SubscribeToEvent(E_OPENPROJECT, URHO3D_HANDLER(ProjectWindow, HandleOpenProject));
 
 		return projectwindow_;
 	}

@@ -19,33 +19,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-#include "../Urho3D.h"
-#include "../Core/Context.h"
-#include "../UI/BorderImage.h"
-#include "../Input/InputEvents.h"
-#include "../UI/ScrollBar.h"
-#include "../UI/ScrollView.h"
-#include "../UI/Slider.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../UI/Text.h"
-#include "../UI/UIEvents.h"
-#include "../UI/ListView.h"
-#include "../UI/Button.h"
-#include "../UI/LineEdit.h"
-#include "../UI/CheckBox.h"
-#include "../UI/DropDownList.h"
-#include "../Scene/Node.h"
-#include "../Scene/Component.h"
-#include "../UI/DropDownList.h"
-#include "../Resource/XMLFile.h"
-#include "../Core/StringUtils.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/UI/BorderImage.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/UI/ScrollBar.h>
+#include <Urho3D/UI/ScrollView.h>
+#include <Urho3D/UI/Slider.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/CheckBox.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Scene/Component.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/Core/StringUtils.h>
 
 #include "AttributeVariable.h"
 #include "AttributeVariableEvents.h"
 
 #include "UIGlobals.h"
-#include "../DebugNew.h"
+#include <Urho3D/DebugNew.h>
 
 
 // Resource picker functionality
@@ -142,7 +142,7 @@ namespace Urho3D
 	void BasicAttributeUI::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<BoolAttributeUI>();
-		COPY_BASE_ATTRIBUTES(UIElement);
+		URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 	}
 
 	BasicAttributeUI::BasicAttributeUI(Context* context) : UIElement(context)
@@ -214,7 +214,7 @@ namespace Urho3D
 	void BoolAttributeUI::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<BoolAttributeUI>();
-		COPY_BASE_ATTRIBUTES(BasicAttributeUI);
+		URHO3D_COPY_BASE_ATTRIBUTES(BasicAttributeUI);
 	}
 
 	BoolAttributeUI::~BoolAttributeUI()
@@ -225,7 +225,7 @@ namespace Urho3D
 	{
 		varEdit_ = CreateChild<CheckBox>("A_VarValue");
 		varEdit_->SetInternal(true);
-		SubscribeToEvent(varEdit_, E_TOGGLED, HANDLER(BoolAttributeUI, HandleToggled));
+		SubscribeToEvent(varEdit_, E_TOGGLED, URHO3D_HANDLER(BoolAttributeUI, HandleToggled));
 		oldValue_ = false;
 	}
 
@@ -304,8 +304,8 @@ namespace Urho3D
 
 		// Do not subscribe to continuous edits of certain attributes (script class names) to prevent unnecessary errors getting printed
 
-		SubscribeToEvent(varEdit_, E_TEXTCHANGED, HANDLER(StringAttributeUI, HandleTextChange));
-		SubscribeToEvent(varEdit_, E_TEXTFINISHED, HANDLER(StringAttributeUI, HandleTextChange));
+		SubscribeToEvent(varEdit_, E_TEXTCHANGED, URHO3D_HANDLER(StringAttributeUI, HandleTextChange));
+		SubscribeToEvent(varEdit_, E_TEXTFINISHED, URHO3D_HANDLER(StringAttributeUI, HandleTextChange));
 	}
 
 	StringAttributeUI::~StringAttributeUI()
@@ -315,7 +315,7 @@ namespace Urho3D
 	void StringAttributeUI::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<StringAttributeUI>();
-		COPY_BASE_ATTRIBUTES(BasicAttributeUI);
+		URHO3D_COPY_BASE_ATTRIBUTES(BasicAttributeUI);
 	}
 
 	StringAttributeUI* StringAttributeUI::Create(Serializable* serializable, const String& name, unsigned int index, XMLFile* defaultstyle, unsigned int subIndex)
@@ -402,7 +402,7 @@ namespace Urho3D
 	void NumberAttributeUI::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<NumberAttributeUI>();
-		COPY_BASE_ATTRIBUTES(BasicAttributeUI);
+		URHO3D_COPY_BASE_ATTRIBUTES(BasicAttributeUI);
 	}
 
 	NumberAttributeUI* NumberAttributeUI::Create(Serializable* serializable, const String& name, unsigned int index, VariantType type, XMLFile* defaultstyle, unsigned int subIndex)
@@ -600,8 +600,8 @@ namespace Urho3D
 			attrEdit->SetStyle("EditorAttributeEdit");
 			attrEdit->SetFixedHeight(17);
 			attrEdit->SetVar(ATTR_COORDINATE, 1);
-			SubscribeToEvent(attrEdit, E_TEXTCHANGED, HANDLER(NumberAttributeUI, HandleTextChange));
-			SubscribeToEvent(attrEdit, E_TEXTFINISHED, HANDLER(NumberAttributeUI, HandleTextChange));
+			SubscribeToEvent(attrEdit, E_TEXTCHANGED, URHO3D_HANDLER(NumberAttributeUI, HandleTextChange));
+			SubscribeToEvent(attrEdit, E_TEXTFINISHED, URHO3D_HANDLER(NumberAttributeUI, HandleTextChange));
 			varEdit_.Push(SharedPtr<LineEdit>(attrEdit));
 			return;
 		}
@@ -623,8 +623,8 @@ namespace Urho3D
 			attrEdit->SetStyle("EditorAttributeEdit");
 			attrEdit->SetFixedHeight(17);
 			attrEdit->SetVar(ATTR_COORDINATE, i);
-			SubscribeToEvent(attrEdit, E_TEXTCHANGED, HANDLER(NumberAttributeUI, HandleTextChange));
-			SubscribeToEvent(attrEdit, E_TEXTFINISHED, HANDLER(NumberAttributeUI, HandleTextChange));
+			SubscribeToEvent(attrEdit, E_TEXTCHANGED, URHO3D_HANDLER(NumberAttributeUI, HandleTextChange));
+			SubscribeToEvent(attrEdit, E_TEXTFINISHED, URHO3D_HANDLER(NumberAttributeUI, HandleTextChange));
 			varEdit_.Push(SharedPtr<LineEdit>(attrEdit));
 		}
 	}
@@ -662,7 +662,7 @@ namespace Urho3D
 		varEdit_->SetResizePopup(true);
 		varEdit_->SetPlaceholderText("--");
 		varEdit_->SetLayout(LM_HORIZONTAL, 0, IntRect(4, 1, 4, 1));
-		SubscribeToEvent(varEdit_, E_ITEMSELECTED, HANDLER(EnumAttributeUI, HandleItemSelected));
+		SubscribeToEvent(varEdit_, E_ITEMSELECTED, URHO3D_HANDLER(EnumAttributeUI, HandleItemSelected));
 		oldValue_ = 0;
 	}
 
@@ -673,7 +673,7 @@ namespace Urho3D
 	void EnumAttributeUI::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<EnumAttributeUI>();
-		COPY_BASE_ATTRIBUTES(BasicAttributeUI);
+		URHO3D_COPY_BASE_ATTRIBUTES(BasicAttributeUI);
 	}
 
 	EnumAttributeUI* EnumAttributeUI::Create(Serializable* serializable, const String& name, unsigned int index, const Vector<String>& enums, XMLFile* defaultstyle)
@@ -763,8 +763,8 @@ namespace Urho3D
 		varEdit_->SetFixedHeight(17);
 		varEdit_->SetDragDropMode(DD_TARGET);
 
-		SubscribeToEvent(varEdit_, E_TEXTFINISHED, HANDLER(ResourceRefAttributeUI, HandleTextChange));
-		//SubscribeToEvent(varEdit_, E_TEXTCHANGED, HANDLER(ResourceRefAttributeUI, HandleTextChange));
+		SubscribeToEvent(varEdit_, E_TEXTFINISHED, URHO3D_HANDLER(ResourceRefAttributeUI, HandleTextChange));
+		//SubscribeToEvent(varEdit_, E_TEXTCHANGED, URHO3D_HANDLER(ResourceRefAttributeUI, HandleTextChange));
 		
 	}
 
@@ -775,7 +775,7 @@ namespace Urho3D
 	void ResourceRefAttributeUI::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<ResourceRefAttributeUI>();
-		COPY_BASE_ATTRIBUTES(BasicAttributeUI);
+		URHO3D_COPY_BASE_ATTRIBUTES(BasicAttributeUI);
 	}
 
 	ResourceRefAttributeUI* ResourceRefAttributeUI::Create(Serializable* serializable, const String& name, VariantType type, StringHash resourceType, unsigned int index, unsigned int subindex, XMLFile* defaultstyle, unsigned int action)
@@ -889,22 +889,22 @@ namespace Urho3D
 		if ((action_ & ACTION_PICK) != 0)
 		{
 			pick_ = CreateResourcePickerButton(container_, "Pick");
-			SubscribeToEvent(pick_, E_RELEASED, HANDLER(ResourceRefAttributeUI, HandlePick));
+			SubscribeToEvent(pick_, E_RELEASED, URHO3D_HANDLER(ResourceRefAttributeUI, HandlePick));
 		}
 		if ((action_ & ACTION_OPEN) != 0)
 		{
 			open_ = CreateResourcePickerButton(container_, "Open");
-			SubscribeToEvent(open_, E_RELEASED, HANDLER(ResourceRefAttributeUI, HandleOpen));
+			SubscribeToEvent(open_, E_RELEASED, URHO3D_HANDLER(ResourceRefAttributeUI, HandleOpen));
 		}
 		if ((action_ & ACTION_EDIT) != 0)
 		{
 			edit_ = CreateResourcePickerButton(container_, "Edit");
-			SubscribeToEvent(edit_, E_RELEASED, HANDLER(ResourceRefAttributeUI, HandleEdit));
+			SubscribeToEvent(edit_, E_RELEASED, URHO3D_HANDLER(ResourceRefAttributeUI, HandleEdit));
 		}
 		if ((action_ & ACTION_TEST) != 0)
 		{
 			test_ = CreateResourcePickerButton(container_, "Test");
-			SubscribeToEvent(test_, E_RELEASED, HANDLER(ResourceRefAttributeUI, HandleTest));
+			SubscribeToEvent(test_, E_RELEASED, URHO3D_HANDLER(ResourceRefAttributeUI, HandleTest));
 		}
 	}
 

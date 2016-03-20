@@ -9,17 +9,17 @@
 
 #pragma once
 
-#include "..\UI\UIElement.h"
-#include "..\UI\BorderImage.h"
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/UI/BorderImage.h>
 
 namespace Urho3D
 {
 
 	/// Menu selected.
-	EVENT(E_MENUBAR_ACTION, MenuBarAction)
+	URHO3D_EVENT(E_MENUBAR_ACTION, MenuBarAction)
 	{
-		PARAM(P_ACTION, Action);              // stringhash 
-		PARAM(P_UINAME, UIName);              // string
+		URHO3D_PARAM(P_ACTION, Action);              // stringhash 
+		URHO3D_PARAM(P_UINAME, UIName);              // string
 	}
 
 	class BorderImage;
@@ -31,7 +31,7 @@ namespace Urho3D
 	/// \todo use dirty masks
 	class MenuBarUI : public BorderImage
 	{
-		OBJECT(MenuBarUI);
+		URHO3D_OBJECT(MenuBarUI, BorderImage);
 	public:
 		MenuBarUI(Context* context);
 		virtual ~MenuBarUI();

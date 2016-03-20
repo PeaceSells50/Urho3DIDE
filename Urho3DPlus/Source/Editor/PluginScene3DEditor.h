@@ -2,7 +2,7 @@
 
 
 
-#include "../Urho3D.h"
+#include <Urho3D/Urho3D.h>
 
 
 #include "EditorPlugin.h"
@@ -14,7 +14,7 @@ namespace Urho3D
 
 	class PluginScene3DEditor : public EditorPlugin
 	{
-		OBJECT(PluginScene3DEditor);
+		URHO3D_OBJECT(PluginScene3DEditor, EditorPlugin);
 	public:
 		/// Construct.
 		PluginScene3DEditor(Context* context);

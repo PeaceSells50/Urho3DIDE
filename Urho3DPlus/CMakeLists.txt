@@ -75,8 +75,13 @@ set (CPP_FILES ${CPP_FILES} ${CPP_FILES_})
 set (CPP_FILES ${CPP_FILES} ${CPP_FILES_})
 set (SOURCE_FILES ${CPP_FILES} ${H_FILES})
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../Source)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../${DEST_INCLUDE_DIR}/ThirdParty)
+
 # Setup target with resource copying
 setup_library ()
+
+# message(${CMAKE_CURRENT_SOURCE_DIR}/../${DEST_INCLUDE_DIR}/ThirdParty)
 
 target_include_directories (Urho3DPlus PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Source)
 

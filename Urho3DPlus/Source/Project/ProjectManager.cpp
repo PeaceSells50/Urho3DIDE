@@ -1,39 +1,39 @@
-#include "../Urho3D.h"
+#include <Urho3D/Urho3D.h>
 
 
 #include "ProjectManager.h"
 
-#include "../Core/Context.h"
-#include "../Graphics/Texture2D.h"
-#include "../Resource/ResourceCache.h"
-#include "../Math/Color.h"
-#include "../UI/UIElement.h"
-#include "../UI/Window.h"
-#include "../Graphics/Graphics.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../IO/FileSystem.h"
-#include "../UI/ListView.h"
-#include "../UI/Text.h"
-#include "../UI/Button.h"
-#include "../Resource/XMLFile.h"
-#include "../Resource/ResourceCache.h"
-#include "../Graphics/Texture2D.h"
-#include "../UI/BorderImage.h"
-#include "../Graphics/Texture.h"
-#include "../Scene/Serializable.h"
-#include "../Container/Str.h"
-#include "../Core/Context.h"
+#include <Urho3d/Core/Context.h>
+#include <Urho3d/Graphics/Texture2D.h>
+#include <Urho3d/Resource/ResourceCache.h>
+#include <Urho3d/Math/Color.h>
+#include <Urho3d/UI/UIElement.h>
+#include <Urho3d/UI/Window.h>
+#include <Urho3d/Graphics/Graphics.h>
+#include <Urho3d/UI/UI.h>
+#include <Urho3d/UI/UIEvents.h>
+#include <Urho3d/IO/FileSystem.h>
+#include <Urho3d/UI/ListView.h>
+#include <Urho3d/UI/Text.h>
+#include <Urho3d/UI/Button.h>
+#include <Urho3d/Resource/XMLFile.h>
+#include <Urho3d/Resource/ResourceCache.h>
+#include <Urho3d/Graphics/Texture2D.h>
+#include <Urho3d/UI/BorderImage.h>
+#include <Urho3d/Graphics/Texture.h>
+#include <Urho3d/Scene/Serializable.h>
+#include <Urho3d/Container/Str.h>
+#include <Urho3d/Core/Context.h>
 #include "Utils/Helpers.h"
 #include "UI/DirSelector.h"
 #include "UI/ModalWindow.h"
 #include "UI/AttributeContainer.h"
 #include "UI/UIGlobals.h"
 #include "TemplateManager.h"
-#include "../UI/Font.h"
-#include "../IO/Log.h"
-#include "../Core/ProcessUtils.h"
-#include "../IO/File.h"
+#include <Urho3d/UI/Font.h>
+#include <Urho3d/IO/Log.h>
+#include <Urho3d/Core/ProcessUtils.h>
+#include <Urho3d/IO/File.h>
 
 
 namespace Urho3D
@@ -85,7 +85,7 @@ namespace Urho3D
 				String command = "xcopy " + GetNativePath(templatedir) + " " + GetNativePath(projectdir) + " /e /i /h";
 				//int  ret = fileSystem->SystemCommand(command, true);
 				ret  = system(command.CString());
-				LOGINFOF("%s", command.CString());
+				URHO3D_LOGINFOF("%s", command.CString());
 				if (!ret)
 				{
 					String datapath = templateManager_->GetTemplatesPath() +"Data";
@@ -99,7 +99,7 @@ namespace Urho3D
 				}
 #endif
 				if (ret)
-					LOGERRORF("Could not create Folder %s", projectdir.CString());
+					URHO3D_LOGERRORF("Could not create Folder %s", projectdir.CString());
 				else
 				{
 					UpdateProjects(projectsRootDir_);
@@ -124,7 +124,7 @@ namespace Urho3D
 					
 			}
 			else
-				LOGERRORF("Project %s does already exists", newProject_->name_.CString());
+				URHO3D_LOGERRORF("Project %s does already exists", newProject_->name_.CString());
 			
 			selectedtemplate_ = NULL;
 		}
@@ -135,7 +135,7 @@ namespace Urho3D
 	{
 		CreateDirSelector("Choose Project Root Dir", "Open", "Cancel", projectsRootDir_);
 
-		SubscribeToEvent(dirSelector_, E_FILESELECTED, HANDLER(ProjectManager, HandleRootSelected));
+		SubscribeToEvent(dirSelector_, E_FILESELECTED, URHO3D_HANDLER(ProjectManager, HandleRootSelected));
 
 		return false;
 	}
@@ -345,19 +345,19 @@ namespace Urho3D
 		Button* b = NULL;
 
 		b = dynamic_cast<Button*>(welcomeUI_->GetChild("NewProject", true));
-		SubscribeToEvent(b, E_RELEASED, HANDLER(ProjectManager, HandleNewProject));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(ProjectManager, HandleNewProject));
 		b = dynamic_cast<Button*>(welcomeUI_->GetChild("ChangeRoot", true));
-		SubscribeToEvent(b, E_RELEASED, HANDLER(ProjectManager, HandleChangeRootDir));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(ProjectManager, HandleChangeRootDir));
 		b = dynamic_cast<Button*>(welcomeUI_->GetChild("OpenProject", true));
-		SubscribeToEvent(b, E_RELEASED, HANDLER(ProjectManager, HandleOpenProject));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(ProjectManager, HandleOpenProject));
 		b = dynamic_cast<Button*>(welcomeUI_->GetChild("RescanButton", true));
-		SubscribeToEvent(b, E_RELEASED, HANDLER(ProjectManager, HandleRescanProjects));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(ProjectManager, HandleRescanProjects));
 
 		UpdateProjects(projectsRootDir_);
 
 		ListView*	hierarchyList = dynamic_cast<ListView*>(welcomeUI_->GetChild("ProjectListView", true));
 
-		SubscribeToEvent(hierarchyList, E_ITEMCLICKED, HANDLER(ProjectManager, HandleProjectListClick));
+		SubscribeToEvent(hierarchyList, E_ITEMCLICKED, URHO3D_HANDLER(ProjectManager, HandleProjectListClick));
 
 		Text* tt = NULL;
 		tt = dynamic_cast<Text*>(welcomeUI_->GetChild("RootPath", true));
@@ -410,7 +410,7 @@ namespace Urho3D
 			nametile->SetFont(font, 12);
 			nametile->SetText(templateManager_->GetTemplateProjects()[i]->name_);
 
-			SubscribeToEvent(panel, E_RELEASED, HANDLER(ProjectManager, HandleOnTemplateClick));
+			SubscribeToEvent(panel, E_RELEASED, URHO3D_HANDLER(ProjectManager, HandleOnTemplateClick));
 		}
 
 		tempview->AddChild(TemplateScrollView);
@@ -437,7 +437,7 @@ namespace Urho3D
 			Button* cancelButton = (Button*)newProjectWindow->GetWindow()->GetChild("CancelButton", true);
 			cancelButton->SetVisible(true);
 			cancelButton->SetFocus(true);
-			SubscribeToEvent(newProjectWindow, E_MESSAGEACK, HANDLER(ProjectManager, HandleNewProjectAck));
+			SubscribeToEvent(newProjectWindow, E_MESSAGEACK, URHO3D_HANDLER(ProjectManager, HandleNewProjectAck));
 		}
 
 		newProjectWindow->AddRef();
@@ -516,11 +516,11 @@ namespace Urho3D
 	{
 		context->RegisterFactory<ProjectSettings>();
 
-		ATTRIBUTE("Name", String, name_, String("noName"), AM_FILE);
-		ATTRIBUTE("Icon", String, icon_, String::EMPTY, AM_FILE);
-		ATTRIBUTE("Resource Folders", String, resFolders_, String::EMPTY, AM_FILE);
-		ATTRIBUTE("Main Script", String, mainScript_, String::EMPTY, AM_FILE);	
-		ATTRIBUTE("Main Scene", String, mainScene_, String::EMPTY, AM_FILE);	
+		URHO3D_ATTRIBUTE("Name", String, name_, String("noName"), AM_FILE);
+		URHO3D_ATTRIBUTE("Icon", String, icon_, String::EMPTY, AM_FILE);
+		URHO3D_ATTRIBUTE("Resource Folders", String, resFolders_, String::EMPTY, AM_FILE);
+		URHO3D_ATTRIBUTE("Main Script", String, mainScript_, String::EMPTY, AM_FILE);
+		URHO3D_ATTRIBUTE("Main Scene", String, mainScene_, String::EMPTY, AM_FILE);
 	}
 
 	void ProjectSettings::CopyAttr(ProjectSettings* proj)

@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-#include "..\Urho3D.h"
+#include <Urho3D/Urho3D.h>
 #include "UIUtils.h"
 #include <Urho3D\IO\Log.h>
 #include <Urho3D\Scene\Scene.h>
@@ -56,9 +56,9 @@
 #include <Urho3D\UI\BorderImage.h>
 #include <Urho3D\UI\ToolTip.h>
 #include <Urho3D/DebugNew.h>
-#include "../UI/Button.h"
+#include <Urho3d/UI/Button.h>
 #include "UIGlobals.h"
-#include "../Scene/Serializable.h"
+#include <Urho3d/Scene/Serializable.h>
 
 namespace Urho3D
 {

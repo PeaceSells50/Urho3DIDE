@@ -1,5 +1,5 @@
 
-#include "../Urho3D.h"
+#include <Urho3D/Urho3D.h>
 #include "EditorPlugin.h"
 #include "InGameEditor.h"
 

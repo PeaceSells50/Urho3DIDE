@@ -21,9 +21,9 @@
 //
 #pragma once
 
-#include "../UI/UIElement.h"
-#include "../Core/Attribute.h"
-#include "../Core/Object.h"
+#include <Urho3d/UI/UIElement.h>
+#include <Urho3d/Core/Attribute.h>
+#include <Urho3d/Core/Object.h>
 
 namespace Urho3D
 {
@@ -55,7 +55,7 @@ namespace Urho3D
 	/// \todo Serialization
 	class AttributeInspector : public Object
 	{
-		OBJECT(AttributeInspector);
+		URHO3D_OBJECT(AttributeInspector, Object);
 
 	public:
 		/// Construct.

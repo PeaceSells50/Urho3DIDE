@@ -1,15 +1,15 @@
 #include "HierarchyWindow.h"
-#include "..\UI\Text.h"
-#include "..\UI\Button.h"
-#include "..\UI\ListView.h"
-#include "..\UI\CheckBox.h"
-#include "..\UI\UIEvents.h"
-#include "..\Scene\SceneEvents.h"
-#include "..\Scene\Node.h"
-#include "..\Scene\Component.h"
+#include <Urho3D\UI\Text.h>
+#include <Urho3D\UI\Button.h>
+#include <Urho3D\UI\ListView.h>
+#include <Urho3D\UI\CheckBox.h>
+#include <Urho3D\UI\UIEvents.h>
+#include <Urho3D\Scene\SceneEvents.h>
+#include <Urho3D\Scene\Node.h>
+#include <Urho3D\Scene\Component.h>
 #include "UIUtils.h"
-#include "..\Scene\Scene.h"
-#include "..\UI\UIElement.h"
+#include <Urho3D\Scene\Scene.h>
+#include <Urho3D\UI\UIElement.h>
 
 namespace Urho3D
 {
@@ -99,16 +99,16 @@ namespace Urho3D
 		hierarchyList_->GetContentElement()->SetDragDropMode(DD_TARGET);
 		hierarchyList_->GetScrollPanel()->SetDragDropMode(DD_TARGET);
 
-		SubscribeToEvent(closeButton_, E_RELEASED, HANDLER(HierarchyWindow, HideHierarchyWindow));
-		SubscribeToEvent(expandButton_, E_RELEASED, HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
-		SubscribeToEvent(collapseButton_, E_RELEASED, HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
+		SubscribeToEvent(closeButton_, E_RELEASED, URHO3D_HANDLER(HierarchyWindow, HideHierarchyWindow));
+		SubscribeToEvent(expandButton_, E_RELEASED, URHO3D_HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
+		SubscribeToEvent(collapseButton_, E_RELEASED, URHO3D_HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
 
-		SubscribeToEvent(hierarchyList_, E_SELECTIONCHANGED, HANDLER(HierarchyWindow, HandleHierarchyListSelectionChange));
-		SubscribeToEvent(hierarchyList_, E_ITEMDOUBLECLICKED, HANDLER(HierarchyWindow, HandleHierarchyListDoubleClick));
+		SubscribeToEvent(hierarchyList_, E_SELECTIONCHANGED, URHO3D_HANDLER(HierarchyWindow, HandleHierarchyListSelectionChange));
+		SubscribeToEvent(hierarchyList_, E_ITEMDOUBLECLICKED, URHO3D_HANDLER(HierarchyWindow, HandleHierarchyListDoubleClick));
 
-		SubscribeToEvent(E_DRAGDROPTEST, HANDLER(HierarchyWindow, HandleDragDropTest));
-		SubscribeToEvent(E_DRAGDROPFINISH, HANDLER(HierarchyWindow, HandleDragDropFinish));
-		SubscribeToEvent(E_TEMPORARYCHANGED, HANDLER(HierarchyWindow, HandleTemporaryChanged));
+		SubscribeToEvent(E_DRAGDROPTEST, URHO3D_HANDLER(HierarchyWindow, HandleDragDropTest));
+		SubscribeToEvent(E_DRAGDROPFINISH, URHO3D_HANDLER(HierarchyWindow, HandleDragDropFinish));
+		SubscribeToEvent(E_TEMPORARYCHANGED, URHO3D_HANDLER(HierarchyWindow, HandleTemporaryChanged));
 	}
 
 	HierarchyWindow::~HierarchyWindow()
@@ -119,16 +119,16 @@ namespace Urho3D
 	void HierarchyWindow::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<HierarchyWindow>();
-		COPY_BASE_ATTRIBUTES(Window);
-		ACCESSOR_ATTRIBUTE("Suppress UIElement Changes", GetSuppressUIElementChanges, SetSuppressUIElementChanges, bool,false , AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Suppress Scene Changes", GetSuppressSceneChanges, SetSuppressSceneChanges, bool, false, AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Show Temporary Object", GetShowTemporaryObject, SetShowTemporaryObject, bool, false, AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Show Internal UIElement", GetShowInternalUIElement, SetShowInternalUIElement, bool, false, AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Component Text Color", GetComponentTextColor, SetComponentTextColor, Color, Color(0.7f, 1.0f, 0.7f), AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Node Text Color", GetNodeTextColor, SetNodeTextColor, Color, Color(1.0f, 1.0f, 1.0f), AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Modified Text Color", GetModifiedTextColor, SetModifiedTextColor, Color, Color(1.0f, 0.8f, 0.5f), AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Non Editable Text Color", GetNonEditableTextColor, SetNonEditableTextColor, Color, Color(0.7f, 0.7f, 0.7f), AM_DEFAULT);
-		ACCESSOR_ATTRIBUTE("Normal Text Color", GetNormalTextColor, SetNormalTextColor, Color, Color(1.0f, 1.0f, 1.0f), AM_DEFAULT);
+		URHO3D_COPY_BASE_ATTRIBUTES(Window);
+		URHO3D_ACCESSOR_ATTRIBUTE("Suppress UIElement Changes", GetSuppressUIElementChanges, SetSuppressUIElementChanges, bool, false, AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Suppress Scene Changes", GetSuppressSceneChanges, SetSuppressSceneChanges, bool, false, AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Show Temporary Object", GetShowTemporaryObject, SetShowTemporaryObject, bool, false, AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Show Internal UIElement", GetShowInternalUIElement, SetShowInternalUIElement, bool, false, AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Component Text Color", GetComponentTextColor, SetComponentTextColor, Color, Color(0.7f, 1.0f, 0.7f), AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Node Text Color", GetNodeTextColor, SetNodeTextColor, Color, Color(1.0f, 1.0f, 1.0f), AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Modified Text Color", GetModifiedTextColor, SetModifiedTextColor, Color, Color(1.0f, 0.8f, 0.5f), AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Non Editable Text Color", GetNonEditableTextColor, SetNonEditableTextColor, Color, Color(0.7f, 0.7f, 0.7f), AM_DEFAULT);
+		URHO3D_ACCESSOR_ATTRIBUTE("Normal Text Color", GetNormalTextColor, SetNormalTextColor, Color, Color(1.0f, 1.0f, 1.0f), AM_DEFAULT);
 
 	}
 
@@ -218,9 +218,9 @@ namespace Urho3D
 		allCheckBox_->SetVisible(visible);
 		if (visible)
 		{
-			SubscribeToEvent(closeButton_, E_RELEASED, HANDLER(HierarchyWindow, HideHierarchyWindow));
-			SubscribeToEvent(expandButton_, E_RELEASED, HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
-			SubscribeToEvent(collapseButton_, E_RELEASED, HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
+			SubscribeToEvent(closeButton_, E_RELEASED, URHO3D_HANDLER(HierarchyWindow, HideHierarchyWindow));
+			SubscribeToEvent(expandButton_, E_RELEASED, URHO3D_HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
+			SubscribeToEvent(collapseButton_, E_RELEASED, URHO3D_HANDLER(HierarchyWindow, ExpandCollapseHierarchy));
 		}else
 		{
 			UnsubscribeFromEvent(closeButton_, E_RELEASED);
@@ -574,10 +574,10 @@ namespace Urho3D
 
 		case ITEM_UI_ELEMENT:
 			// Subscribe to UI-element events
-			SubscribeToEvent(serializable, E_NAMECHANGED, HANDLER(HierarchyWindow, HandleUIElementNameChanged));
-			SubscribeToEvent(serializable, E_VISIBLECHANGED, HANDLER(HierarchyWindow, HandleUIElementVisibilityChanged));
-			SubscribeToEvent(serializable, E_RESIZED, HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
-			SubscribeToEvent(serializable, E_POSITIONED, HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
+			SubscribeToEvent(serializable, E_NAMECHANGED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementNameChanged));
+			SubscribeToEvent(serializable, E_VISIBLECHANGED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementVisibilityChanged));
+			SubscribeToEvent(serializable, E_RESIZED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
+			SubscribeToEvent(serializable, E_POSITIONED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
 			break;
 
 		default:
@@ -589,13 +589,13 @@ namespace Urho3D
 		if (scene != NULL)
 		{
 			UpdateHierarchyItem(scene);
-			SubscribeToEvent(scene, E_NODEADDED, HANDLER(HierarchyWindow, HandleNodeAdded));
-			SubscribeToEvent(scene, E_NODEREMOVED, HANDLER(HierarchyWindow, HandleNodeRemoved));
-			SubscribeToEvent(scene, E_COMPONENTADDED, HANDLER(HierarchyWindow, HandleComponentAdded));
-			SubscribeToEvent(scene, E_COMPONENTREMOVED, HANDLER(HierarchyWindow, HandleComponentRemoved));
-			SubscribeToEvent(scene, E_NODENAMECHANGED, HANDLER(HierarchyWindow, HandleNodeNameChanged));
-			SubscribeToEvent(scene, E_NODEENABLEDCHANGED, HANDLER(HierarchyWindow, HandleNodeEnabledChanged));
-			SubscribeToEvent(scene, E_COMPONENTENABLEDCHANGED, HANDLER(HierarchyWindow, HandleComponentEnabledChanged));
+			SubscribeToEvent(scene, E_NODEADDED, URHO3D_HANDLER(HierarchyWindow, HandleNodeAdded));
+			SubscribeToEvent(scene, E_NODEREMOVED, URHO3D_HANDLER(HierarchyWindow, HandleNodeRemoved));
+			SubscribeToEvent(scene, E_COMPONENTADDED, URHO3D_HANDLER(HierarchyWindow, HandleComponentAdded));
+			SubscribeToEvent(scene, E_COMPONENTREMOVED, URHO3D_HANDLER(HierarchyWindow, HandleComponentRemoved));
+			SubscribeToEvent(scene, E_NODENAMECHANGED, URHO3D_HANDLER(HierarchyWindow, HandleNodeNameChanged));
+			SubscribeToEvent(scene, E_NODEENABLEDCHANGED, URHO3D_HANDLER(HierarchyWindow, HandleNodeEnabledChanged));
+			SubscribeToEvent(scene, E_COMPONENTENABLEDCHANGED, URHO3D_HANDLER(HierarchyWindow, HandleComponentEnabledChanged));
 		}
 		else
 		{
@@ -618,15 +618,15 @@ namespace Urho3D
 		{
 			UpdateHierarchyItem(rootui);
 			// Subscribe to UI-element events
-			SubscribeToEvent(rootui, E_NAMECHANGED, HANDLER(HierarchyWindow, HandleUIElementNameChanged));
-			SubscribeToEvent(rootui, E_VISIBLECHANGED, HANDLER(HierarchyWindow, HandleUIElementVisibilityChanged));
-			SubscribeToEvent(rootui, E_RESIZED, HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
-			SubscribeToEvent(rootui, E_POSITIONED, HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
+			SubscribeToEvent(rootui, E_NAMECHANGED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementNameChanged));
+			SubscribeToEvent(rootui, E_VISIBLECHANGED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementVisibilityChanged));
+			SubscribeToEvent(rootui, E_RESIZED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
+			SubscribeToEvent(rootui, E_POSITIONED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementAttributeChanged));
 
 			// This is needed to distinguish our own element events from Editor's UI element events
 			rootui->SetElementEventSender(true);
-			SubscribeToEvent(rootui, E_ELEMENTADDED, HANDLER(HierarchyWindow, HandleUIElementAdded));
-			SubscribeToEvent(rootui, E_ELEMENTREMOVED, HANDLER(HierarchyWindow, HandleUIElementRemoved));
+			SubscribeToEvent(rootui, E_ELEMENTADDED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementAdded));
+			SubscribeToEvent(rootui, E_ELEMENTREMOVED, URHO3D_HANDLER(HierarchyWindow, HandleUIElementRemoved));
 		}
 		else
 		{

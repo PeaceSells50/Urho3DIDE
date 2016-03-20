@@ -1,29 +1,29 @@
-#include "../Urho3D.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
 #include "InGameEditor.h"
-#include "../Core/CoreEvents.h"
-#include "../UI/DropDownList.h"
-#include "../Engine/EngineEvents.h"
-#include "../UI/Font.h"
-#include "../Graphics/Graphics.h"
-#include "../Graphics/GraphicsEvents.h"
-#include "../Input/Input.h"
-#include "../Input/InputEvents.h"
-#include "../IO/IOEvents.h"
-#include "../UI/LineEdit.h"
-#include "../UI/ListView.h"
-#include "../IO/Log.h"
-#include "../Resource/ResourceCache.h"
-#include "../UI/ScrollBar.h"
-#include "../UI/Text.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../Scene/Scene.h"
-#include "../Graphics/Texture.h"
-#include "../Graphics/Texture2D.h"
-#include "../Scene/Component.h"
-#include "../Scene/Node.h"
-#include "../UI/UIElement.h"
+#include <Urho3D/Core/CoreEvents.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Engine/EngineEvents.h>
+#include <Urho3D/UI/Font.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Graphics/GraphicsEvents.h>
+#include <Urho3D/Input/Input.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/IO/IOEvents.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/IO/Log.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/UI/ScrollBar.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/Graphics/Texture.h>
+#include <Urho3D/Graphics/Texture2D.h>
+#include <Urho3D/Scene/Component.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/UI/UIElement.h>
 #include "UIGlobals.h"
 #include "MenuBarUI.h"
 #include "ToolBarUI.h"
@@ -32,13 +32,13 @@
 #include "AttributeInspector.h"
 #include "ResourcePicker.h"
 #include "EditorSelection.h"
-#include "../Core/Variant.h"
+#include <Urho3D/Core/Variant.h>
 #include "UIUtils.h"
 #include "EditorPlugin.h"
 #include "PluginScene3DEditor.h"
-#include "../Graphics/Camera.h"
-#include "../Graphics/Renderer.h"
-#include "../Graphics/Viewport.h"
+#include <Urho3D/Graphics/Camera.h>
+#include <Urho3D/Graphics/Renderer.h>
+#include <Urho3D/Graphics/Viewport.h>
 
 namespace Urho3D
 {
@@ -78,7 +78,7 @@ namespace Urho3D
 		menubar_->CreateMenuItem("Windows", "Attribute", A_SHOWATTRIBUTE_VAR);
 		menubar_->CreateMenuItem("Windows", "Hierarchy", A_SHOWHIERARCHY_VAR);
 
-		SubscribeToEvent(menubar_, E_MENUBAR_ACTION, HANDLER(InGameEditor, HandleMenuBarAction));
+		SubscribeToEvent(menubar_, E_MENUBAR_ACTION, URHO3D_HANDLER(InGameEditor, HandleMenuBarAction));
 
 		//////////////////////////////////////////////////////////////////////////
 		/// create the hierarchy editor
@@ -98,7 +98,7 @@ namespace Urho3D
 		hierarchyWindow_->SetBorder(IntRect(4, 4, 4, 4));
 		hierarchyWindow_->SetResizeBorder(IntRect(8, 8, 8, 8));
 
-		SubscribeToEvent(hierarchyWindow_->GetHierarchyList(), E_SELECTIONCHANGED, HANDLER(InGameEditor, HandleHierarchyListSelectionChange));
+		SubscribeToEvent(hierarchyWindow_->GetHierarchyList(), E_SELECTIONCHANGED, URHO3D_HANDLER(InGameEditor, HandleHierarchyListSelectionChange));
 
 		//////////////////////////////////////////////////////////////////////////
 		/// create the attribute editor
@@ -167,10 +167,10 @@ namespace Urho3D
 				SendEvent(E_START_INGAMEEDITOR_, newEventData);
 
 				/// Subscribe input events
-				SubscribeToEvent(E_KEYDOWN, HANDLER(InGameEditor, HandleKeyDown));
-				SubscribeToEvent(E_KEYUP, HANDLER(InGameEditor, HandleKeyUp));
+				SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(InGameEditor, HandleKeyDown));
+				SubscribeToEvent(E_KEYUP, URHO3D_HANDLER(InGameEditor, HandleKeyUp));
 				// Subscribe HandleUpdate() function for processing update events
-				SubscribeToEvent(E_UPDATE, HANDLER(InGameEditor, HandleUpdate));
+				SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(InGameEditor, HandleUpdate));
 				SetMainEditor(PluginScene3DEditor::GetTypeStatic());
 	
 			}

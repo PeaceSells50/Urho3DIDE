@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "../Core/Object.h"
-#include "../Core/Context.h"
+#include <Urho3D/Core/Object.h>
+#include <Urho3D/Core/Context.h>
 #include "Utils/Macros.h"
 
 namespace Urho3D
@@ -13,8 +13,8 @@ namespace Urho3D
 
 	class EditorPlugin : public Object
 	{
-		OBJECT(EditorPlugin);
-		BASEOBJECT(EditorPlugin);
+		URHO3D_OBJECT(EditorPlugin, Object);
+//		BASEOBJECT(EditorPlugin);
 	public:
 		/// Construct.
 		EditorPlugin(Context* context);

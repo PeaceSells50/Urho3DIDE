@@ -9,8 +9,8 @@
 
 #pragma once
 
-#include "..\UI\UIElement.h"
-#include "..\UI\BorderImage.h"
+#include <Urho3d/UI\UIElement.h>
+#include <Urho3d/UI\BorderImage.h>
 
 namespace Urho3D
 {
@@ -24,7 +24,7 @@ namespace Urho3D
 	/// \todo use dirty masks
 	class MiniToolBarUI : public BorderImage
 	{
-		OBJECT(MiniToolBarUI);
+		URHO3D_OBJECT(MiniToolBarUI, BorderImage);
 	public:
 		MiniToolBarUI(Context* context);
 		virtual ~MiniToolBarUI();

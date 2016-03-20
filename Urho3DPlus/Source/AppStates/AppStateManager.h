@@ -22,17 +22,17 @@
 
 #pragma once
 
-#include "..\Core\Context.h"
-#include "..\Core\Object.h"
-#include "..\Container\List.h"
-#include "..\Container\HashMap.h"
-#include "..\Scene\Serializable.h"
+#include <Urho3D\Core\Context.h>
+#include <Urho3D\Core\Object.h>
+#include <Urho3D\Container\List.h>
+#include <Urho3D\Container\HashMap.h>
+#include <Urho3D\Scene\Serializable.h>
 
 // All Urho3D classes reside in namespace Urho3D
 namespace Urho3D
 {
 
-	EVENT(E_NOACTIVEAPPSTATE, NoActiveAppState)
+	URHO3D_EVENT(E_NOACTIVEAPPSTATE, NoActiveAppState)
 	{
 	}
 
@@ -42,7 +42,7 @@ namespace Urho3D
 
 	class AppStateManager : public Object
 	{
-		OBJECT(AppStateManager);
+		URHO3D_OBJECT(AppStateManager, Object);
 
 		friend class AppState;
 		friend class AppTransitionState;
@@ -95,8 +95,8 @@ namespace Urho3D
 	class AppState : public Serializable
 	{
 
-		OBJECT(AppState);
-		BASEOBJECT(AppState);
+		URHO3D_OBJECT(AppState, Serializable);
+//		BASEOBJECT(AppState);
 
 		friend class AppStateManager;
 		friend class AppTransitionState;
@@ -188,7 +188,7 @@ namespace Urho3D
 
 	class AppTransitionState : public AppState
 	{
-		OBJECT(AppState);
+		URHO3D_OBJECT(AppTransitionState, AppState);
 		friend class AppStateManager;
 	public:
 		

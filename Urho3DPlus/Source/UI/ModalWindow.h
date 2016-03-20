@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include "../Core/Object.h"
+#include <Urho3d/Core/Object.h>
 
 namespace Urho3D
 {
@@ -35,7 +35,7 @@ namespace Urho3D
 	/// Message box dialog.
 	class ModalWindow : public Object
 	{
-		OBJECT(ModalWindow);
+		URHO3D_OBJECT(ModalWindow, Object);
 
 	public:
 		/// Construct. If layout file is not given, use the default message box layout. If style file is not given, use the default style file from root UI element.

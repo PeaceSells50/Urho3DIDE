@@ -24,13 +24,13 @@
 
 
 
-#include "../UI/Window.h"
+#include <Urho3d/UI/Window.h>
 
 namespace Urho3D
 {
-	EVENT(E_ACTIVETABCHANGED, ActiveTabChanged)
+	URHO3D_EVENT(E_ACTIVETABCHANGED, ActiveTabChanged)
 	{
-		PARAM(P_TABINDEX, TabIndex);              // unsigned
+		URHO3D_PARAM(P_TABINDEX, TabIndex);              // unsigned
 	}
 
 	class Window;
@@ -39,7 +39,7 @@ namespace Urho3D
 	/// %TabWindow %UI element.
 	class  TabWindow : public Window
 	{
-		OBJECT(TabWindow);
+		URHO3D_OBJECT(TabWindow, Window);
 
 	public:
 		/// Construct.

@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include "../Urho3D.h"
-#include "../Core/Object.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Object.h>
+#include <Urho3D/Core/Context.h>
 #include "Utils/Macros.h"
 
 
@@ -31,7 +31,7 @@ namespace Urho3D
 
 	class EditorView : public Object
 	{
-		OBJECT(EditorView);
+		URHO3D_OBJECT(EditorView, Object);
 	public:
 		/// Construct.
 		EditorView(Context* context,EditorData* data= NULL);

@@ -2,20 +2,20 @@
 
 
 
-#include "..\Urho3D.h"
-#include "..\Core\Context.h"
-#include "..\UI\BorderImage.h"
-#include "..\UI\UI.h"
-#include "..\UI\Menu.h"
-#include "..\Math\Rect.h"
-#include "..\UI\Text.h"
-#include "..\UI\Window.h"
-#include "..\Input\InputEvents.h"
-#include "..\UI\UIEvents.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core\Context.h>
+#include <Urho3D/UI\BorderImage.h>
+#include <Urho3D/UI\UI.h>
+#include <Urho3D/UI\Menu.h>
+#include <Urho3D/Math\Rect.h>
+#include <Urho3D/UI\Text.h>
+#include <Urho3D/UI\Window.h>
+#include <Urho3D/Input\InputEvents.h>
+#include <Urho3D/UI\UIEvents.h>
 #include "ToolBarUI.h"
-#include "..\UI\CheckBox.h"
-#include "..\UI\ToolTip.h"
-#include "..\UI\ScrollBar.h"
+#include <Urho3D/UI\CheckBox.h>
+#include <Urho3D/UI\ToolTip.h>
+#include <Urho3D/UI\ScrollBar.h>
 
 namespace Urho3D
 {
@@ -41,8 +41,8 @@ namespace Urho3D
 	void ToolBarUI::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<ToolBarUI>();
-		COPY_BASE_ATTRIBUTES(BorderImage);
-		UPDATE_ATTRIBUTE_DEFAULT_VALUE("Is Enabled", true);
+		URHO3D_COPY_BASE_ATTRIBUTES(BorderImage);
+		URHO3D_UPDATE_ATTRIBUTE_DEFAULT_VALUE("Is Enabled", true);
 
 	}
 

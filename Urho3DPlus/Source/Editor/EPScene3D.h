@@ -1,11 +1,11 @@
 #pragma once
 
 #include "EditorPlugin.h"
-#include "..\UI\BorderImage.h"
-#include "..\Math\Color.h"
+#include <Urho3D\UI\BorderImage.h>
+#include <Urho3D\Math\Color.h>
 #include "UIGlobals.h"
-#include "..\UI\UIElement.h"
-#include "..\Scene\Node.h"
+#include <Urho3D\UI\UIElement.h>
+#include <Urho3D\Scene\Node.h>
 
 namespace Urho3D
 {
@@ -71,7 +71,7 @@ namespace Urho3D
 
 	class EPScene3DView : public BorderImage
 	{
-		OBJECT(EPScene3DView);
+		URHO3D_OBJECT(EPScene3DView, BorderImage);
 		friend class EPScene3D;
 	public:
 		/// Construct.
@@ -182,7 +182,7 @@ namespace Urho3D
 
 	class EPScene3D : public EditorPlugin
 	{
-		OBJECT(EPScene3D);
+		URHO3D_OBJECT(EPScene3D, EditorPlugin);
 		friend class GizmoScene3D;
 	public:
 		/// Construct.

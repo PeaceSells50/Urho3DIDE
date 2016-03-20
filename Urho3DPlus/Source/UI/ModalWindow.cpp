@@ -20,19 +20,19 @@
 // THE SOFTWARE.
 //
 
-#include "../Urho3D.h"
-#include "../UI/Button.h"
-#include "../Core/Context.h"
-#include "../Graphics/Graphics.h"
-#include "../IO/Log.h"
-#include "../Resource/ResourceCache.h"
-#include "../UI/Text.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../UI/Window.h"
-#include "../Resource/XMLFile.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/IO/Log.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/Resource/XMLFile.h>
 #include "ModalWindow.h"
-#include "../UI/UIElement.h"
+#include <Urho3D/UI/UIElement.h>
 
 
 namespace Urho3D
@@ -82,10 +82,10 @@ namespace Urho3D
 				window->SetPosition((graphics->GetWidth() - size.x_) / 2, (graphics->GetHeight() - size.y_) / 2);
 			}
 			else
-				LOGWARNING("Instantiating a modal window in headless mode!");
+				URHO3D_LOGWARNING("Instantiating a modal window in headless mode!");
 
 			window->SetModal(true);
-			SubscribeToEvent(window, E_MODALCHANGED, HANDLER(ModalWindow, HandleMessageAcknowledged));
+			SubscribeToEvent(window, E_MODALCHANGED, URHO3D_HANDLER(ModalWindow, HandleMessageAcknowledged));
 		}
 
 		// Bind the buttons (if any in the loaded UI layout) to event handlers
@@ -93,16 +93,16 @@ namespace Urho3D
 		if (okButton_)
 		{
 			ui->SetFocusElement(okButton_);
-			SubscribeToEvent(okButton_, E_RELEASED, HANDLER(ModalWindow, HandleMessageAcknowledged));
+			SubscribeToEvent(okButton_, E_RELEASED, URHO3D_HANDLER(ModalWindow, HandleMessageAcknowledged));
 		}
 
 		Button* cancelButton = dynamic_cast<Button*>(window_->GetChild("CancelButton", true));
 		if (cancelButton)
-			SubscribeToEvent(cancelButton, E_RELEASED, HANDLER(ModalWindow, HandleMessageAcknowledged));
+			SubscribeToEvent(cancelButton, E_RELEASED, URHO3D_HANDLER(ModalWindow, HandleMessageAcknowledged));
 
 		Button* closeButton = dynamic_cast<Button*>(window_->GetChild("CloseButton", true));
 		if (closeButton)
-			SubscribeToEvent(closeButton, E_RELEASED, HANDLER(ModalWindow, HandleMessageAcknowledged));
+			SubscribeToEvent(closeButton, E_RELEASED, URHO3D_HANDLER(ModalWindow, HandleMessageAcknowledged));
 	}
 
 

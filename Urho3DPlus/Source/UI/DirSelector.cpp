@@ -21,23 +21,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-#include "../Urho3D.h"
-#include "../Core/Context.h"
-#include "../UI/DropDownList.h"
-#include "../IO/File.h"
-#include "../IO/FileSystem.h"
-#include "../Input/InputEvents.h"
-#include "../UI/LineEdit.h"
-#include "../UI/ListView.h"
-#include "../UI/Text.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../UI/Window.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/IO/File.h>
+#include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/Window.h>
 
-#include "../Container/Sort.h"
+#include <Urho3D/Container/Sort.h>
 #include "DirSelector.h"
-#include "../DebugNew.h"
-#include "../UI/FileSelector.h"
+#include <Urho3D/DebugNew.h>
+#include <Urho3D/UI/FileSelector.h>
 
 namespace Urho3D
 {
@@ -120,16 +120,16 @@ namespace Urho3D
 		ui->SetFocusElement(fileList_);
 		window_->SetModal(true);
 
-		SubscribeToEvent(filterList_, E_ITEMSELECTED, HANDLER(DirSelector, HandleFilterChanged));
-		SubscribeToEvent(pathEdit_, E_TEXTFINISHED, HANDLER(DirSelector, HandlePathChanged));
-		SubscribeToEvent(fileNameEdit_, E_TEXTFINISHED, HANDLER(DirSelector, HandleOKPressed));
-		SubscribeToEvent(fileList_, E_ITEMSELECTED, HANDLER(DirSelector, HandleFileSelected));
-		SubscribeToEvent(fileList_, E_ITEMDOUBLECLICKED, HANDLER(DirSelector, HandleFileDoubleClicked));
-		SubscribeToEvent(fileList_, E_UNHANDLEDKEY, HANDLER(DirSelector, HandleFileListKey));
-		SubscribeToEvent(okButton_, E_RELEASED, HANDLER(DirSelector, HandleOKPressed));
-		SubscribeToEvent(cancelButton_, E_RELEASED, HANDLER(DirSelector, HandleCancelPressed));
-		SubscribeToEvent(closeButton_, E_RELEASED, HANDLER(DirSelector, HandleCancelPressed));
-		SubscribeToEvent(window_, E_MODALCHANGED, HANDLER(DirSelector, HandleCancelPressed));
+		SubscribeToEvent(filterList_, E_ITEMSELECTED, URHO3D_HANDLER(DirSelector, HandleFilterChanged));
+		SubscribeToEvent(pathEdit_, E_TEXTFINISHED, URHO3D_HANDLER(DirSelector, HandlePathChanged));
+		SubscribeToEvent(fileNameEdit_, E_TEXTFINISHED, URHO3D_HANDLER(DirSelector, HandleOKPressed));
+		SubscribeToEvent(fileList_, E_ITEMSELECTED, URHO3D_HANDLER(DirSelector, HandleFileSelected));
+		SubscribeToEvent(fileList_, E_ITEMDOUBLECLICKED, URHO3D_HANDLER(DirSelector, HandleFileDoubleClicked));
+		SubscribeToEvent(fileList_, E_UNHANDLEDKEY, URHO3D_HANDLER(DirSelector, HandleFileListKey));
+		SubscribeToEvent(okButton_, E_RELEASED, URHO3D_HANDLER(DirSelector, HandleOKPressed));
+		SubscribeToEvent(cancelButton_, E_RELEASED, URHO3D_HANDLER(DirSelector, HandleCancelPressed));
+		SubscribeToEvent(closeButton_, E_RELEASED, URHO3D_HANDLER(DirSelector, HandleCancelPressed));
+		SubscribeToEvent(window_, E_MODALCHANGED, URHO3D_HANDLER(DirSelector, HandleCancelPressed));
 	}
 
 	DirSelector::~DirSelector()

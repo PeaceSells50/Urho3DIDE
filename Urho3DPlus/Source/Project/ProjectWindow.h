@@ -8,7 +8,7 @@
  */
 
 #pragma once
-#include "..\Core\Object.h"
+#include <Urho3D/Core/Object.h>
 
 namespace Urho3D
 {
@@ -23,7 +23,7 @@ namespace Urho3D
 
 	class ProjectWindow : public Object
 	{
-		OBJECT(ProjectWindow);
+		URHO3D_OBJECT(ProjectWindow, Object);
 	public:
 		ProjectWindow(Context* context);
 		virtual ~ProjectWindow();

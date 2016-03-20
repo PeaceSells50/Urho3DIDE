@@ -19,12 +19,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-#include "..//Urho3D.h"
+#include <Urho3D\Urho3D.h>
 #include "AppStateManager.h"
 
-#include "../Core/CoreEvents.h"
-#include "../Resource/ResourceCache.h"
-#include "../IO/Log.h"
+#include <Urho3D/Core/CoreEvents.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/IO/Log.h>
 
 namespace Urho3D
 {
@@ -32,7 +32,7 @@ namespace Urho3D
 	{
 		activeState_ = NULL;
 		stateHistory_ = NULL;
-		SubscribeToEvent(E_UPDATE, HANDLER(AppStateManager, HandleUpdate));
+		SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(AppStateManager, HandleUpdate));
 		
 	}
 
@@ -188,7 +188,7 @@ namespace Urho3D
 		// Not in list?
 		if (pState == NULL)
 		{
-			LOGERRORF("AppStateManager::TransitionState: You can only transition states that currently exist in the state history,%s. ",
+			URHO3D_LOGERRORF("AppStateManager::TransitionState: You can only transition states that currently exist in the state history,%s. ",
 				fromState->GetStateId().CString());
 			return false;
 		}
@@ -201,7 +201,7 @@ namespace Urho3D
 			// Is this a valid state type?
 			if (ToDesc.type != StateType_Normal)
 			{
-				LOGERROR("AppStateManager::TransitionState:Unable to transition to any state type other than 'normal' using complex transitioning. ");
+				URHO3D_LOGERROR("AppStateManager::TransitionState:Unable to transition to any state type other than 'normal' using complex transitioning. ");
 				return false;
 			}
 		}
@@ -209,14 +209,14 @@ namespace Urho3D
 		// Select the state we're transitioning via
 		if (!GetStateDesc(viaStateId, &ViaDesc))
 		{
-			LOGERRORF("AppStateManager::TransitionState:The specified app state %s that should be used to perform a transition was not found.", viaStateId.CString());
+			URHO3D_LOGERRORF("AppStateManager::TransitionState:The specified app state %s that should be used to perform a transition was not found.", viaStateId.CString());
 			return false;
 		}
 
 		// Is this a valid state type?
 		if (ViaDesc.type != StateType_Transition)
 		{
-			LOGERROR("AppStateManager::TransitionState:Unable to perform a transition between two states using any state type other than 'transition'.");
+			URHO3D_LOGERROR("AppStateManager::TransitionState:Unable to perform a transition between two states using any state type other than 'transition'.");
 			return false;
 		}
 
@@ -270,7 +270,7 @@ namespace Urho3D
 		// Not in list?
 		if (pState == NULL)
 		{
-			LOGERRORF("AppStateManager::TransitionState: You can only transition states that currently exist in the state history,%s. ",
+			URHO3D_LOGERRORF("AppStateManager::TransitionState: You can only transition states that currently exist in the state history,%s. ",
 				fromState->GetStateId().CString());
 			return false;
 		}
@@ -278,7 +278,7 @@ namespace Urho3D
 		// Select the state we're transitioning to
 		if (!GetStateDesc(toStateId, &Desc))
 		{
-			LOGERRORF("AppStateManager::TransitionState:The specified app state %s to which we should transition was not found.",
+			URHO3D_LOGERRORF("AppStateManager::TransitionState:The specified app state %s to which we should transition was not found.",
 				toStateId.CString());
 			return false;
 		} 
@@ -286,7 +286,7 @@ namespace Urho3D
 		// Is this a valid state type?
 		if (Desc.type != StateType_Normal)
 		{
-			LOGERROR("AppStateManager::TransitionState:Unable to transition to any state type other than 'normal' using simple transitioning. ");
+			URHO3D_LOGERROR("AppStateManager::TransitionState:Unable to transition to any state type other than 'normal' using simple transitioning. ");
 			return false;
 		}
 
@@ -334,7 +334,7 @@ namespace Urho3D
 
 		if (selectedState->IsBegun())
 		{
-			LOGERRORF("AppStateManager::SpawnChildState: AppState %s is already running!", newStateId.CString());
+			URHO3D_LOGERRORF("AppStateManager::SpawnChildState: AppState %s is already running!", newStateId.CString());
 			return NULL;
 		}
 

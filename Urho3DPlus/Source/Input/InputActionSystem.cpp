@@ -1,7 +1,7 @@
-#include "../Urho3D.h"
+#include <Urho3D/Urho3D.h>
 #include "InputActionSystem.h"
-#include "../Input/InputEvents.h"
-#include "../Core/Variant.h"
+#include "Urho3d/Input/InputEvents.h"
+#include "Urho3d/Core/Variant.h"
 #include "SDL/SDL_stdinc.h"
 
 namespace Urho3D
@@ -9,10 +9,10 @@ namespace Urho3D
 	InputActionSystem::InputActionSystem(Context* context) : Object(context),
 		currentState_(NULL)
 	{
-		SubscribeToEvent(E_KEYDOWN, HANDLER(InputActionSystem, HandleKeyDown));
-		SubscribeToEvent(E_KEYUP, HANDLER(InputActionSystem, HandleKeyUp));
-		SubscribeToEvent(E_MOUSEBUTTONDOWN, HANDLER(InputActionSystem, HandleMouseButtonDown));
-		SubscribeToEvent(E_MOUSEBUTTONUP, HANDLER(InputActionSystem, HandleMouseButtonUp));
+		SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(InputActionSystem, HandleKeyDown));
+		SubscribeToEvent(E_KEYUP, URHO3D_HANDLER(InputActionSystem, HandleKeyUp));
+		SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(InputActionSystem, HandleMouseButtonDown));
+		SubscribeToEvent(E_MOUSEBUTTONUP, URHO3D_HANDLER(InputActionSystem, HandleMouseButtonUp));
 	}
 
 	InputActionSystem::~InputActionSystem()

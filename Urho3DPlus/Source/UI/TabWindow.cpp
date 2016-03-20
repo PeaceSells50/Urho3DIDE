@@ -22,17 +22,17 @@
 // THE SOFTWARE.
 //
 
-#include "../Urho3D.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
 #include "TabWindow.h"
-#include "../UI/Cursor.h"
-#include "../Input/InputEvents.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../UI/Window.h"
-#include "../UI/Button.h"
-#include "../UI/Text.h"
-#include "../UI/BorderImage.h"
+#include <Urho3D/UI/Cursor.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/BorderImage.h>
 
 
 namespace Urho3D
@@ -69,7 +69,7 @@ namespace Urho3D
 	void TabWindow::RegisterObject(Context* context)
 	{
 		context->RegisterFactory<TabWindow>(UI_CATEGORY);
-		COPY_BASE_ATTRIBUTES(Window);
+		URHO3D_COPY_BASE_ATTRIBUTES(Window);
 
 	}
 
@@ -93,7 +93,7 @@ namespace Urho3D
 			tabbutton->SetStyle("TabButton");
 			tabbutton->SetVar(TAB_INDEX,index);
 
-			SubscribeToEvent(tabbutton.Get(), E_RELEASED, HANDLER(TabWindow, HandleButton));
+			SubscribeToEvent(tabbutton.Get(), E_RELEASED, URHO3D_HANDLER(TabWindow, HandleButton));
 		
 			Text* tabButtonLabel = tabbutton->CreateChild<Text>(name+"_Text");
 			tabButtonLabel->SetText(name);

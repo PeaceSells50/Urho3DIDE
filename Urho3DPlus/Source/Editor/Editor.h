@@ -1,8 +1,8 @@
 #pragma once
 
-#include "..\Core\Object.h"
-#include "..\Container\Vector.h"
-#include "..\Core\Variant.h"
+#include <Urho3D/Core\Object.h>
+#include <Urho3D/Container\Vector.h>
+#include <Urho3D/Core\Variant.h>
 
 namespace Urho3D
 {
@@ -34,7 +34,7 @@ namespace Urho3D
 
 	class Editor : public Object
 	{
-		OBJECT(Editor);
+		URHO3D_OBJECT(Editor, Object);
 	public:
 		Editor(Context* context);
 		virtual ~Editor();

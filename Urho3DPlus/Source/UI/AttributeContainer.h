@@ -21,9 +21,9 @@
 //
 #pragma once
 
-#include "../UI/UIElement.h"
-#include "../Core/Attribute.h"
-#include "../Core/Object.h"
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/Core/Attribute.h>
+#include <Urho3D/Core/Object.h>
 
 namespace Urho3D
 {
@@ -50,7 +50,7 @@ namespace Urho3D
 
 	class AttributeContainer : public UIElement
 	{
-		OBJECT(AttributeContainer);
+		URHO3D_OBJECT(AttributeContainer, UIElement);
 
 	public:
 		/// Construct.

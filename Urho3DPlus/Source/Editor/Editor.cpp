@@ -1,33 +1,33 @@
-#include "../Urho3D.h"
-#include "../Core/Context.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
 
 #include "Editor.h"
 
-#include "../Resource/ResourceCache.h"
-#include "../UI/UI.h"
-#include "../Graphics/Graphics.h"
-#include "../Input/InputEvents.h"
-#include "../UI/Window.h"
-#include "../UI/UIElement.h"
-#include "../UI/UIEvents.h"
-#include "../Scene/Scene.h"
-#include "../UI/View3D.h"
-#include "../Scene/Node.h"
-#include "../Graphics/Camera.h"
-#include "../Graphics/Zone.h"
-#include "../Math/BoundingBox.h"
-#include "../Math/Color.h"
-#include "../Math/Quaternion.h"
-#include "../Graphics/StaticModel.h"
-#include "../Graphics/Model.h"
-#include "../Graphics/Material.h"
-#include "../Graphics/Light.h"
-#include "../Graphics/Octree.h"
-#include "../UI/UIElement.h"
-#include "../Resource/Resource.h"
-#include "../Container/Str.h"
-#include "../UI/FileSelector.h"
-#include "../Resource/XMLFile.h"
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/UI/View3D.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Graphics/Camera.h>
+#include <Urho3D/Graphics/Zone.h>
+#include <Urho3D/Math/BoundingBox.h>
+#include <Urho3D/Math/Color.h>
+#include <Urho3D/Math/Quaternion.h>
+#include <Urho3D/Graphics/StaticModel.h>
+#include <Urho3D/Graphics/Model.h>
+#include <Urho3D/Graphics/Material.h>
+#include <Urho3D/Graphics/Light.h>
+#include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/Resource/Resource.h>
+#include <Urho3D/Container/Str.h>
+#include <Urho3D/UI/FileSelector.h>
+#include <Urho3D/Resource/XMLFile.h>
 
 #include "Editor/EditorSelection.h"
 #include "UI/HierarchyWindow.h"
@@ -41,18 +41,18 @@
 #include "AttributeContainer.h"
 #include "ResourcePicker.h"
 #include "EditorData.h"
-#include "../Graphics/Texture2D.h"
+#include <Urho3D/Graphics/Texture2D.h>
 #include "EditorPlugin.h"
 #include "EPScene3D.h"
 #include "EPScene2D.h"
-#include "../Scene/Component.h"
-#include "../Graphics/DebugRenderer.h"
-#include "../Graphics/Octree.h"
-#include "../Core/CoreEvents.h"
-#include "../UI/ListView.h"
-#include "../IO/FileSystem.h"
+#include <Urho3D/Scene/Component.h>
+#include <Urho3D/Graphics/DebugRenderer.h>
+#include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Core/CoreEvents.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/IO/FileSystem.h>
 #include "ProjectManager.h"
-#include "../IO/Log.h"
+#include <Urho3D/IO/Log.h>
 #include "ResourceBrowser.h"
 
 namespace Urho3D
@@ -121,7 +121,7 @@ namespace Urho3D
 		menubar->CreateMenu("File");
 		menubar->CreateMenuItem("File", "Quit", A_QUITEDITOR_VAR);
 
-		SubscribeToEvent(editorView_->GetGetMenuBar(), E_MENUBAR_ACTION, HANDLER(Editor, HandleMenuBarAction));
+		SubscribeToEvent(editorView_->GetGetMenuBar(), E_MENUBAR_ACTION, URHO3D_HANDLER(Editor, HandleMenuBarAction));
 
 		context_->RegisterSubsystem(new EditorSelection(context_, this));
 		editorSelection_ = GetSubsystem<EditorSelection>();
@@ -145,8 +145,8 @@ namespace Urho3D
 		/// remove the title bar from the window
 		hierarchyWindow_->SetTitleBarVisible(false);
 
-		SubscribeToEvent(hierarchyWindow_->GetHierarchyList(), E_SELECTIONCHANGED, HANDLER(Editor, HandleHierarchyListSelectionChange));
-		SubscribeToEvent(hierarchyWindow_->GetHierarchyList(), E_ITEMDOUBLECLICKED, HANDLER(Editor, HandleHierarchyListDoubleClick));
+		SubscribeToEvent(hierarchyWindow_->GetHierarchyList(), E_SELECTIONCHANGED, URHO3D_HANDLER(Editor, HandleHierarchyListSelectionChange));
+		SubscribeToEvent(hierarchyWindow_->GetHierarchyList(), E_ITEMDOUBLECLICKED, URHO3D_HANDLER(Editor, HandleHierarchyListDoubleClick));
 
 		/// add Hierarchy inspector to the left side of the editor.
 		editorView_->GetLeftFrame()->AddTab("Hierarchy", hierarchyWindow_);
@@ -175,8 +175,8 @@ namespace Urho3D
 		resourceBrowser_ = new ResourceBrowser(context_);
 		resourceBrowser_->CreateResourceBrowser();
 		resourceBrowser_->ShowResourceBrowserWindow();
-		SubscribeToEvent(editorView_->GetMiddleFrame(), E_ACTIVETABCHANGED, HANDLER(Editor, HandleMainEditorTabChanged));
-		SubscribeToEvent(E_UPDATE, HANDLER(Editor, HandleUpdate));
+		SubscribeToEvent(editorView_->GetMiddleFrame(), E_ACTIVETABCHANGED, URHO3D_HANDLER(Editor, HandleMainEditorTabChanged));
+		SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Editor, HandleUpdate));
 
 		visible_ = true;
 		return true;
@@ -209,7 +209,7 @@ namespace Urho3D
 
 		if (!scenefile.StartsWith(project->path_))
 		{
-			LOGERRORF("Scene is not located in Project Path %s", scenefile.CString());
+			URHO3D_LOGERRORF("Scene is not located in Project Path %s", scenefile.CString());
 			return;
 		}
 
@@ -236,7 +236,7 @@ namespace Urho3D
 		// Always load the scene from the filesystem, not from resource paths
 		if (!fileSystem_->FileExists(fileName))
 		{
-			LOGERRORF("No such scene %s", fileName.CString());
+			URHO3D_LOGERRORF("No such scene %s", fileName.CString());
 			//MessageBox("No such scene.\n" + fileName);
 			return false;
 		}
@@ -244,7 +244,7 @@ namespace Urho3D
 		File file(context_);
 		if (!file.Open(fileName, FILE_READ))
 		{
-			LOGERRORF("Could not open file %s", fileName.CString());
+			URHO3D_LOGERRORF("Could not open file %s", fileName.CString());
 			//	MessageBox("Could not open file.\n" + fileName);
 			return false;
 		}

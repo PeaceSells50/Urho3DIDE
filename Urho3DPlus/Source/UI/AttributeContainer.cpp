@@ -19,39 +19,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-#include "../Urho3D.h"
-#include "../Core/Context.h"
-#include "../UI/BorderImage.h"
-#include "../Input/InputEvents.h"
-#include "../UI/ScrollBar.h"
-#include "../UI/ScrollView.h"
-#include "../UI/Slider.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../UI/Text.h"
-#include "../UI/UIEvents.h"
-#include "../UI/ListView.h"
-#include "../UI/Button.h"
-#include "../UI/LineEdit.h"
-#include "../UI/CheckBox.h"
-#include "../UI/DropDownList.h"
-#include "../Scene/Node.h"
-#include "../Scene/Component.h"
-#include "../UI/DropDownList.h"
-#include "../Resource/XMLFile.h"
-#include "../UI/Window.h"
-#include "../Resource/ResourceCache.h"
-#include "../IO/FileSystem.h"
-#include "../Scene/Scene.h"
-#include "../Scene/Node.h"
-#include "../UI/UIElement.h"
-#include "../UI/DropDownList.h"
-#include "../UI/LineEdit.h"
-#include "../UI/FileSelector.h"
-#include "../Resource/Resource.h"
-#include "../Resource/ResourceCache.h"
-#include "../IO/Log.h"
-#include "../Graphics/StaticModel.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/UI/BorderImage.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/UI/ScrollBar.h>
+#include <Urho3D/UI/ScrollView.h>
+#include <Urho3D/UI/Slider.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/CheckBox.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Scene/Component.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/FileSelector.h>
+#include <Urho3D/Resource/Resource.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/IO/Log.h>
+#include <Urho3D/Graphics/StaticModel.h>
 
 
 #include "AttributeVariableEvents.h"
@@ -61,7 +61,7 @@
 #include "ResourcePicker.h"
 #include "UIGlobals.h"
 
-#include "../DebugNew.h"
+#include <Urho3D/DebugNew.h>
 
 
 namespace Urho3D
@@ -70,10 +70,10 @@ namespace Urho3D
 	{
 
 		context->RegisterFactory<AttributeContainer>();
-		COPY_BASE_ATTRIBUTES(UIElement);
-		ATTRIBUTE("Show Non Editable", bool, showNonEditableAttribute_, false, AM_FILE);
-		ATTRIBUTE("Attr Name Width", int, attrNameWidth_, 150, AM_FILE);
-		ATTRIBUTE("Attr Height", int, attrHeight_, 19, AM_FILE);
+		URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
+		URHO3D_ATTRIBUTE("Show Non Editable", bool, showNonEditableAttribute_, false, AM_FILE);
+		URHO3D_ATTRIBUTE("Attr Name Width", int, attrNameWidth_, 150, AM_FILE);
+		URHO3D_ATTRIBUTE("Attr Height", int, attrHeight_, 19, AM_FILE);
 	}
 
 	AttributeContainer::~AttributeContainer()
@@ -198,7 +198,7 @@ namespace Urho3D
 			if (noTextChangedAttrs_.Find(info.name_) == noTextChangedAttrs_.End())
 				attr->GetVarValueUI()->UnsubscribeFromEvent(E_TEXTCHANGED);
 
-			SubscribeToEvent(attr, AEE_STRINGVARCHANGED, HANDLER(AttributeContainer, EditStringAttribute));
+			SubscribeToEvent(attr, AEE_STRINGVARCHANGED, URHO3D_HANDLER(AttributeContainer, EditStringAttribute));
 			attributes_[index].Insert(subIndex, attr);
 		}
 		else if (type == VAR_BOOL)
@@ -209,14 +209,14 @@ namespace Urho3D
 			attr->SetSubIndex(subIndex);
 			if (info.name_ == (isUIElement ? "Is Visible" : "Is Enabled"))
 			{
-				SubscribeToEvent(attr, AEE_BOOLVARCHANGED, HANDLER(AttributeContainer, EditEnabledAttribute));
+				SubscribeToEvent(attr, AEE_BOOLVARCHANGED, URHO3D_HANDLER(AttributeContainer, EditEnabledAttribute));
 
 				attr->GetVarNameUI()->SetVisible(false);
 				iconsPanel_->AddChild(attr);
 			}
 			else
 			{
-				SubscribeToEvent(attr, AEE_BOOLVARCHANGED, HANDLER(AttributeContainer, EditBoolAttribute));
+				SubscribeToEvent(attr, AEE_BOOLVARCHANGED, URHO3D_HANDLER(AttributeContainer, EditBoolAttribute));
 				attributeList_->AddItem(attr);
 			}
 
@@ -238,7 +238,7 @@ namespace Urho3D
 			attr->SetSubIndex(subIndex);
 
 			parent = attr;
-			SubscribeToEvent(attr, AEE_NUMBERVARCHANGED, HANDLER(AttributeContainer, EditNumberAttribute));
+			SubscribeToEvent(attr, AEE_NUMBERVARCHANGED, URHO3D_HANDLER(AttributeContainer, EditNumberAttribute));
 			attributes_[index].Insert(subIndex, attr);
 		}
 
@@ -275,7 +275,7 @@ namespace Urho3D
 				// 					 attrEdit->SetDragDropMode(DD_TARGET);
 
 				parent = attr;
-				SubscribeToEvent(attr, AEE_NUMBERVARCHANGED, HANDLER(AttributeContainer, EditNumberAttribute));
+				SubscribeToEvent(attr, AEE_NUMBERVARCHANGED, URHO3D_HANDLER(AttributeContainer, EditNumberAttribute));
 				attributes_[index].Insert(subIndex, attr);
 			}
 			else
@@ -286,7 +286,7 @@ namespace Urho3D
 	
 				parent = attr;
 
-				SubscribeToEvent(attr, AEE_ENUMVARCHANGED, HANDLER(AttributeContainer, EditEnumAttribute));
+				SubscribeToEvent(attr, AEE_ENUMVARCHANGED, URHO3D_HANDLER(AttributeContainer, EditEnumAttribute));
 
 				attributes_[index].Insert(subIndex, attr);
 			}
@@ -316,7 +316,7 @@ namespace Urho3D
 			attributeList_->AddItem(attr);
 
 
-			SubscribeToEvent(attr, AEE_RESREFVARCHANGED, HANDLER(AttributeContainer, EditResRefAttribute));
+			SubscribeToEvent(attr, AEE_RESREFVARCHANGED, URHO3D_HANDLER(AttributeContainer, EditResRefAttribute));
 			parent = attr;
 			attributes_[index].Insert(subIndex, attr);
 		}

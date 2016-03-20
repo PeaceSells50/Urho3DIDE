@@ -1,10 +1,10 @@
 #include "PluginScene3DEditor.h"
 #include "EditorPlugin.h"
 #include "InGameEditor.h"
-#include "..\Graphics\Camera.h"
-#include "..\Scene\Node.h"
-#include "..\Input\Input.h"
-#include "..\UI\UI.h"
+#include <Urho3D\Graphics\Camera.h>
+#include <Urho3D\Scene\Node.h>
+#include <Urho3D\Input\Input.h>
+#include <Urho3D\UI\UI.h>
 #include "InputActionSystem.h"
 
 namespace Urho3D

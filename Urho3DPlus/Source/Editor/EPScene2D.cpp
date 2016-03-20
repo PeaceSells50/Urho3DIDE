@@ -1,23 +1,23 @@
 
-#include "../Urho3D.h"
+#include <Urho3D/Urho3D.h>
 #include "EPScene2D.h"
-#include "../Core/Context.h"
-#include "../Scene/Component.h"
-#include "../Scene/Node.h"
-#include "../Scene/Scene.h"
-#include "../UI/Window.h"
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/Scene/Component.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/UI/Window.h>
 #include "EditorData.h"
-#include "../UI/Text.h"
-#include "../UI/UIElement.h"
-#include "../UI/UI.h"
-#include "../Input/Input.h"
-#include "../Resource/ResourceCache.h"
-#include "../Graphics/Renderer.h"
-#include "../IO/FileSystem.h"
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/Input/Input.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Graphics/Renderer.h>
+#include <Urho3D/IO/FileSystem.h>
 #include "EditorView.h"
 #include "EditorSelection.h"
 #include "Editor.h"
-#include "../Urho2D/Drawable2D.h"
+#include <Urho3D/Urho2D/Drawable2D.h>
 
 namespace Urho3D
 {

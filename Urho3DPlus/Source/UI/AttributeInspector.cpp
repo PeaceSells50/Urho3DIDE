@@ -19,39 +19,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-#include "../Urho3D.h"
-#include "../Core/Context.h"
-#include "../UI/BorderImage.h"
-#include "../Input/InputEvents.h"
-#include "../UI/ScrollBar.h"
-#include "../UI/ScrollView.h"
-#include "../UI/Slider.h"
-#include "../UI/UI.h"
-#include "../UI/UIEvents.h"
-#include "../UI/Text.h"
-#include "../UI/UIEvents.h"
-#include "../UI/ListView.h"
-#include "../UI/Button.h"
-#include "../UI/LineEdit.h"
-#include "../UI/CheckBox.h"
-#include "../UI/DropDownList.h"
-#include "../Scene/Node.h"
-#include "../Scene/Component.h"
-#include "../UI/DropDownList.h"
-#include "../Resource/XMLFile.h"
-#include "../UI/Window.h"
-#include "../Resource/ResourceCache.h"
-#include "../IO/FileSystem.h"
-#include "../Scene/Scene.h"
-#include "../Scene/Node.h"
-#include "../UI/UIElement.h"
-#include "../UI/DropDownList.h"
-#include "../UI/LineEdit.h"
-#include "../UI/FileSelector.h"
-#include "../Resource/Resource.h"
-#include "../Resource/ResourceCache.h"
-#include "../IO/Log.h"
-#include "../Graphics/StaticModel.h"
+#include <Urho3D/Urho3D.h>
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/UI/BorderImage.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/UI/ScrollBar.h>
+#include <Urho3D/UI/ScrollView.h>
+#include <Urho3D/UI/Slider.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/UI/ListView.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/CheckBox.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Scene/Component.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/FileSelector.h>
+#include <Urho3D/Resource/Resource.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/IO/Log.h>
+#include <Urho3D/Graphics/StaticModel.h>
 
 #include "AttributeVariableEvents.h"
 #include "AttributeInspector.h"
@@ -60,10 +60,10 @@
 #include "UIGlobals.h"
 #include "UIUtils.h"
 #include "AttributeVariable.h"
-#include "../Graphics/Graphics.h"
-#include "../UI/Button.h"
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/UI/Button.h>
 
-#include "../DebugNew.h"
+#include <Urho3D/DebugNew.h>
 
 
 
@@ -136,12 +136,12 @@ namespace Urho3D
 
 		Update(); 
 
-		SubscribeToEvent(dynamic_cast<Button*>(attributewindow_->GetChild("CloseButton", true)), E_RELEASED, HANDLER(AttributeInspector, HideWindow));
+		SubscribeToEvent(dynamic_cast<Button*>(attributewindow_->GetChild("CloseButton", true)), E_RELEASED, URHO3D_HANDLER(AttributeInspector, HideWindow));
 
-		SubscribeToEvent(AEE_PICKRESOURCE, HANDLER(AttributeInspector, PickResource));
-		SubscribeToEvent(AEE_OPENRESOURCE, HANDLER(AttributeInspector, OpenResource));
-		SubscribeToEvent(AEE_EDITRESOURCE, HANDLER(AttributeInspector, EditResource));
-		SubscribeToEvent(AEE_TESTRESOURCE, HANDLER(AttributeInspector, TestResource));
+		SubscribeToEvent(AEE_PICKRESOURCE, URHO3D_HANDLER(AttributeInspector, PickResource));
+		SubscribeToEvent(AEE_OPENRESOURCE, URHO3D_HANDLER(AttributeInspector, OpenResource));
+		SubscribeToEvent(AEE_EDITRESOURCE, URHO3D_HANDLER(AttributeInspector, EditResource));
+		SubscribeToEvent(AEE_TESTRESOURCE, URHO3D_HANDLER(AttributeInspector, TestResource));
 
 		return attributewindow_;
 	}
@@ -174,9 +174,9 @@ namespace Urho3D
 
 		nodeContainer->SetIcon(iconStyle_, Node::GetTypeNameStatic());
 
-		SubscribeToEvent(nodeContainer->GetChild("ResetToDefault", true), E_RELEASED, HANDLER(AttributeInspector, HandleResetToDefault));
-		SubscribeToEvent(nodeContainer->GetChild("NewVarDropDown", true), E_ITEMSELECTED, HANDLER(AttributeInspector, CreateNodeVariable));
-		SubscribeToEvent(nodeContainer->GetChild("DeleteVarButton", true), E_RELEASED, HANDLER(AttributeInspector, DeleteNodeVariable));
+		SubscribeToEvent(nodeContainer->GetChild("ResetToDefault", true), E_RELEASED, URHO3D_HANDLER(AttributeInspector, HandleResetToDefault));
+		SubscribeToEvent(nodeContainer->GetChild("NewVarDropDown", true), E_ITEMSELECTED, URHO3D_HANDLER(AttributeInspector, CreateNodeVariable));
+		SubscribeToEvent(nodeContainer->GetChild("DeleteVarButton", true), E_RELEASED, URHO3D_HANDLER(AttributeInspector, DeleteNodeVariable));
 
 		// Resize the node editor according to the number of variables, up to a certain maximum
 		unsigned int maxAttrs = Clamp((int)nodeContainer->GetAttributeList()->GetContentElement()->GetNumChildren(), MIN_NODE_ATTRIBUTES, MAX_NODE_ATTRIBUTES);
@@ -329,7 +329,7 @@ namespace Urho3D
 		Graphics* graphics = GetSubsystem<Graphics>();
 		uiFileSelector_->GetWindow()->SetPosition((graphics->GetWidth() - size.x_) / 2, (graphics->GetHeight() - size.y_) / 2);
 	
-		SubscribeToEvent(uiFileSelector_, E_FILESELECTED, HANDLER(AttributeInspector, PickResourceDone));
+		SubscribeToEvent(uiFileSelector_, E_FILESELECTED, URHO3D_HANDLER(AttributeInspector, PickResourceDone));
 	}
 
 	void AttributeInspector::EditAttribute(StringHash eventType, VariantMap& eventData)
@@ -607,7 +607,7 @@ namespace Urho3D
 		Resource* res = cache->GetResource(editorResourcePicker_->GetCurrentResourcePicker()->typeName, resourceName);
 
 		if (res == NULL)
-			LOGWARNINGF("Cannot find resource type: %s  Name: %s ", editorResourcePicker_->GetCurrentResourcePicker()->typeName.CString(), resourceName.CString());
+			URHO3D_LOGWARNINGF("Cannot find resource type: %s  Name: %s ", editorResourcePicker_->GetCurrentResourcePicker()->typeName.CString(), resourceName.CString());
 
 		return res;
 	}

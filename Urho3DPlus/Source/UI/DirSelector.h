@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include "../Core/Object.h"
+#include <Urho3d/Core/Object.h>
 
 namespace Urho3D
 {
@@ -46,7 +46,7 @@ namespace Urho3D
 	/// %File selector dialog.
 	class DirSelector : public Object
 	{
-		OBJECT(DirSelector);
+		URHO3D_OBJECT(DirSelector, Object);
 
 	public:
 		/// Construct.

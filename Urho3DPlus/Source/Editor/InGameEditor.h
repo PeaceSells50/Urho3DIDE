@@ -2,18 +2,18 @@
 
 
 
-#include "../Core/Object.h"
+#include <Urho3D/Core/Object.h>
 #include "Utils/Macros.h"
 
 
 namespace Urho3D
 {
 
-	EVENT(E_QUIT_INGAMEEDITOR_, QuitInGameEditor)
+	URHO3D_EVENT(E_QUIT_INGAMEEDITOR_, QuitInGameEditor)
 	{
 	
 	}
-	EVENT(E_START_INGAMEEDITOR_, StartInGameEditor)
+	URHO3D_EVENT(E_START_INGAMEEDITOR_, StartInGameEditor)
 	{
 
 	}
@@ -47,7 +47,7 @@ namespace Urho3D
 
 	class InGameEditor : public Object
 	{
-		OBJECT(InGameEditor);
+		URHO3D_OBJECT(InGameEditor, Object);
 	public:
 		/// Construct.
 		InGameEditor(Context* context);

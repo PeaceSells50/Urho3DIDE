@@ -1,71 +1,71 @@
-#include "../Urho3D.h"
+#include <Urho3D/Urho3D.h>
 #include "EPScene3D.h"
-#include "../Core/Context.h"
-#include "../Scene/Component.h"
-#include "../Scene/Node.h"
-#include "../Scene/Scene.h"
-#include "../UI/Window.h"
+#include <Urho3D/Core/Context.h>
+#include <Urho3D/Scene/Component.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/UI/Window.h>
 #include "EditorData.h"
-#include "../UI/Text.h"
-#include "../UI/UIElement.h"
-#include "../UI/View3D.h"
-#include "../Scene/Node.h"
-#include "../Graphics/Camera.h"
-#include "../Resource/ResourceCache.h"
-#include "../Graphics/CustomGeometry.h"
-#include "../Graphics/Octree.h"
-#include "../Scene/Scene.h"
-#include "../Graphics/Material.h"
-#include "../UI/UIEvents.h"
-#include "../Graphics/Texture2D.h"
-#include "../Graphics/Graphics.h"
-#include "../Graphics/Viewport.h"
-#include "../Graphics/RenderSurface.h"
-#include "../Graphics/Graphics.h"
-#include "../Scene/Scene.h"
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UIElement.h>
+#include <Urho3D/UI/View3D.h>
+#include <Urho3D/Scene/Node.h>
+#include <Urho3D/Graphics/Camera.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Graphics/CustomGeometry.h>
+#include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Scene/Scene.h>
+#include <Urho3D/Graphics/Material.h>
+#include <Urho3D/UI/UIEvents.h>
+#include <Urho3D/Graphics/Texture2D.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Graphics/Viewport.h>
+#include <Urho3D/Graphics/RenderSurface.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Scene/Scene.h>
 #include "EditorView.h"
-#include "../Core/CoreEvents.h"
-#include "../Input/InputEvents.h"
-#include "../Graphics/GraphicsEvents.h"
-#include "../Graphics/DebugRenderer.h"
+#include <Urho3D/Core/CoreEvents.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/Graphics/GraphicsEvents.h>
+#include <Urho3D/Graphics/DebugRenderer.h>
 #include "EditorSelection.h"
-#include "../Graphics/Terrain.h"
-#include "../UI/UI.h"
-#include "../Input/Input.h"
-#include "../Audio/SoundListener.h"
-#include "../Graphics/Drawable.h"
-#include "../Graphics/Renderer.h"
-#include "../Physics/PhysicsWorld.h"
-#include "../UI/Font.h"
-#include "../UI/CheckBox.h"
-#include "../UI/LineEdit.h"
-#include "../UI/BorderImage.h"
-#include "../UI/Button.h"
+#include <Urho3D/Graphics/Terrain.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/Input/Input.h>
+#include <Urho3D/Audio/SoundListener.h>
+#include <Urho3D/Graphics/Drawable.h>
+#include <Urho3D/Graphics/Renderer.h>
+#include <Urho3D/Physics/PhysicsWorld.h>
+#include <Urho3D/UI/Font.h>
+#include <Urho3D/UI/CheckBox.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/BorderImage.h>
+#include <Urho3D/UI/Button.h>
 #include "UIUtils.h"
-#include "../Resource/XMLFile.h"
-#include "../Core/StringUtils.h"
-#include "../Math/Quaternion.h"
+#include <Urho3D/Resource/XMLFile.h>
+#include <Urho3D/Core/StringUtils.h>
+#include <Urho3D/Math/Quaternion.h>
 #include "MenuBarUI.h"
-#include "../UI/Menu.h"
-#include "../UI/MessageBox.h"
+#include <Urho3D/UI/Menu.h>
+#include <Urho3D/UI/MessageBox.h>
 #include "Editor.h"
 #include "HierarchyWindow.h"
-#include "../UI/FileSelector.h"
-#include "../IO/FileSystem.h"
-#include "../IO/Log.h"
+#include <Urho3D/UI/FileSelector.h>
+#include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/IO/Log.h>
 #include "AttributeInspector.h"
-#include "../IO/File.h"
-#include "../IO/Deserializer.h"
-#include "../UI/Menu.h"
-#include "../Graphics/StaticModel.h"
-#include "../Graphics/Model.h"
+#include <Urho3D/IO/File.h>
+#include <Urho3D/IO/Deserializer.h>
+#include <Urho3D/UI/Menu.h>
+#include <Urho3D/Graphics/StaticModel.h>
+#include <Urho3D/Graphics/Model.h>
 #include "MiniToolBarUI.h"
-#include "../UI/Button.h"
+#include <Urho3D/UI/Button.h>
 #include "ToolBarUI.h"
-#include "../UI/CheckBox.h"
+#include <Urho3D/UI/CheckBox.h>
 #include "GizmoScene3D.h"
-#include "../Physics/RigidBody.h"
-#include "../UI/ListView.h"
+#include <Urho3D/Physics/RigidBody.h>
+#include <Urho3D/UI/ListView.h>
 
 
 namespace Urho3D
@@ -147,20 +147,20 @@ namespace Urho3D
 
 	void EPScene3D::Edit(Object *object)
 	{
-		if (Component::GetTypeStatic() == object->GetBaseType())
-		{
-		}
+//		if (Component::GetTypeStatic() == object->GetBaseType())
+//		{
+//		}
 
-		if (Node::GetTypeStatic() == object->GetBaseType())
-		{
-		}
+//		if (Node::GetTypeStatic() == object->GetBaseType())
+//		{
+//		}
 	}
 
 	bool EPScene3D::Handles(Object *object) const
 	{
-		if (Component::GetTypeStatic() == object->GetBaseType())
+		if (Component::GetTypeInfoStatic()->GetBaseTypeInfo() == object->GetTypeInfo()->GetBaseTypeInfo())
 			return true;
-		if (Node::GetTypeStatic() == object->GetBaseType())
+		if (Node::GetTypeInfoStatic()->GetBaseTypeInfo() == object->GetTypeInfo()->GetBaseTypeInfo())
 			return true;
 		// 		if (Scene::GetTypeStatic() == object->GetType())
 		// 			return true;
@@ -196,14 +196,14 @@ namespace Urho3D
 					
 			if (visible)
 			{
-				SubscribeToEvent(E_POSTRENDERUPDATE, HANDLER(EPScene3D, HandlePostRenderUpdate));
-				SubscribeToEvent(E_UIMOUSECLICK, HANDLER(EPScene3D, ViewMouseClick));
-				SubscribeToEvent(E_MOUSEMOVE, HANDLER(EPScene3D, ViewMouseMove));
-				SubscribeToEvent(E_UIMOUSECLICKEND, HANDLER(EPScene3D, ViewMouseClickEnd));
-				SubscribeToEvent(E_BEGINVIEWUPDATE, HANDLER(EPScene3D, HandleBeginViewUpdate));
-				SubscribeToEvent(E_ENDVIEWUPDATE, HANDLER(EPScene3D, HandleEndViewUpdate));
-				SubscribeToEvent(E_BEGINVIEWRENDER, HANDLER(EPScene3D, HandleBeginViewRender));
-				SubscribeToEvent(E_ENDVIEWRENDER, HANDLER(EPScene3D, HandleEndViewRender));
+				SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(EPScene3D, HandlePostRenderUpdate));
+				SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(EPScene3D, ViewMouseClick));
+				SubscribeToEvent(E_MOUSEMOVE, URHO3D_HANDLER(EPScene3D, ViewMouseMove));
+				SubscribeToEvent(E_UIMOUSECLICKEND, URHO3D_HANDLER(EPScene3D, ViewMouseClickEnd));
+				SubscribeToEvent(E_BEGINVIEWUPDATE, URHO3D_HANDLER(EPScene3D, HandleBeginViewUpdate));
+				SubscribeToEvent(E_ENDVIEWUPDATE, URHO3D_HANDLER(EPScene3D, HandleEndViewUpdate));
+				SubscribeToEvent(E_BEGINVIEWRENDER, URHO3D_HANDLER(EPScene3D, HandleBeginViewRender));
+				SubscribeToEvent(E_ENDVIEWRENDER, URHO3D_HANDLER(EPScene3D, HandleEndViewRender));
 				gizmo_->ShowGizmo();
 				activeView->SetAutoUpdate(true);
 			}
@@ -480,7 +480,7 @@ namespace Urho3D
 		ShowGrid();
 		CreateStatsBar();
 
-		SubscribeToEvent(window_, E_RESIZED, HANDLER(EPScene3D, HandleResizeView));
+		SubscribeToEvent(window_, E_RESIZED, URHO3D_HANDLER(EPScene3D, HandleResizeView));
 
 		//////////////////////////////////////////////////////////////////////////
 		/// Menu Bar entries
@@ -557,7 +557,7 @@ namespace Urho3D
 			editorView_->GetGetMenuBar()->CreatePopupMenuItem(childPopup, objects[i], A_CREATEBUILTINOBJ_VAR);
 		}
 
-		SubscribeToEvent(editorView_->GetGetMenuBar(), E_MENUBAR_ACTION, HANDLER(EPScene3D, HandleMenuBarAction));
+		SubscribeToEvent(editorView_->GetGetMenuBar(), E_MENUBAR_ACTION, URHO3D_HANDLER(EPScene3D, HandleMenuBarAction));
 
 		
 		/// Mini Tool Bar entries
@@ -581,69 +581,69 @@ namespace Urho3D
 
 		Button* b = (Button*)minitool->CreateSmallToolBarButton("Node", "Replicated Node");
 		miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateReplNode));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateReplNode));
 		b = (Button*)minitool->CreateSmallToolBarButton("Node", "Local Node");
 		miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateLocalNode));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateLocalNode));
 
 		minitool->CreateSmallToolBarSpacer(3);
 		b = (Button*)minitool->CreateSmallToolBarButton("Light");
 		miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("Camera");
 		miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("Zone");
 		miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("StaticModel");
 		miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("AnimatedModel"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("BillboardSet"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("ParticleEmitter"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("Skybox"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("Terrain"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("Text3D"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 
 		minitool->CreateSmallToolBarSpacer(3);
 		b = (Button*)minitool->CreateSmallToolBarButton("SoundListener"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("SoundSource3D"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("SoundSource"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 
 		minitool->CreateSmallToolBarSpacer(3);
 		b = (Button*)minitool->CreateSmallToolBarButton("RigidBody"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("CollisionShape"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("Constraint"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 
 		minitool->CreateSmallToolBarSpacer(3);
 		b = (Button*)minitool->CreateSmallToolBarButton("AnimationController"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("ScriptInstance"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 
 		minitool->CreateSmallToolBarSpacer(3);
 		b = (Button*)minitool->CreateSmallToolBarButton("Navigable"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("NavigationMesh"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		b = (Button*)minitool->CreateSmallToolBarButton("OffMeshConnection"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 		minitool->CreateSmallToolBarSpacer(3);
 		b = (Button*)minitool->CreateSmallToolBarButton("NetworkPriority"); miniToolBarButtons_.Push(b);
-		SubscribeToEvent(b, E_RELEASED, HANDLER(EPScene3D, MiniToolBarCreateComponent));
+		SubscribeToEvent(b, E_RELEASED, URHO3D_HANDLER(EPScene3D, MiniToolBarCreateComponent));
 	}
 
 	void EPScene3D::CreateToolBarUI()
@@ -657,15 +657,15 @@ namespace Urho3D
 		CheckBox* checkbox = minitool->CreateToolBarToggle("RunUpdateGroup", "RunUpdatePlay");
 		if (checkbox->IsChecked() != runUpdate)
 			checkbox->SetChecked(runUpdate);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D,ToolBarRunUpdatePlay));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarRunUpdatePlay));
 		checkbox = minitool->CreateToolBarToggle("RunUpdateGroup", "RunUpdatePause");
 		if (checkbox->IsChecked() != (runUpdate == false))
 			checkbox->SetChecked(runUpdate == false);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarRunUpdatePause));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarRunUpdatePause));
 		checkbox = minitool->CreateToolBarToggle("RunUpdateGroup", "RevertOnPause");
 		if (checkbox->IsChecked() != revertOnPause)
 			checkbox->SetChecked(revertOnPause);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarRevertOnPause));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarRevertOnPause));
 		minitool->CreateToolBarSpacer(4);
 
 
@@ -675,46 +675,46 @@ namespace Urho3D
 		checkbox = minitool->CreateToolBarToggle("EditModeGroup", "EditMove");
 		if (checkbox->IsChecked() != (editMode == EDIT_MOVE))
 			checkbox->SetChecked(editMode == EDIT_MOVE);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarEditModeMove));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarEditModeMove));
 		checkbox = minitool->CreateToolBarToggle("EditModeGroup", "EditRotate");
 		if (checkbox->IsChecked() != (editMode == EDIT_ROTATE))
 			checkbox->SetChecked(editMode == EDIT_ROTATE);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarEditModeRotate));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarEditModeRotate));
 		checkbox = minitool->CreateToolBarToggle("EditModeGroup", "EditScale");
 		if (checkbox->IsChecked() != (editMode == EDIT_SCALE))
 			checkbox->SetChecked(editMode == EDIT_SELECT);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarEditModeScale));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarEditModeScale));
 		checkbox = minitool->CreateToolBarToggle("EditModeGroup", "EditSelect");
 		if (checkbox->IsChecked() != (editMode == EDIT_SELECT))
 			checkbox->SetChecked(editMode == EDIT_SELECT);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarEditModeSelect));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarEditModeSelect));
 
 		e = minitool->CreateGroup("AxisModeGroup", LM_HORIZONTAL);
 		toolBarToggles.Push(e);
 		checkbox = minitool->CreateToolBarToggle("AxisModeGroup", "AxisWorld");
 		if (checkbox->IsChecked() != (axisMode == AXIS_WORLD))
 			checkbox->SetChecked(axisMode == AXIS_WORLD);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarAxisModeWorld));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarAxisModeWorld));
 		checkbox = minitool->CreateToolBarToggle("AxisModeGroup", "AxisLocal");
 		if (checkbox->IsChecked() != (axisMode == AXIS_LOCAL))
 			checkbox->SetChecked((axisMode == AXIS_LOCAL));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarAxisModeLocal));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarAxisModeLocal));
 
 		minitool->CreateToolBarSpacer(4);
 		checkbox = minitool->CreateToolBarToggle("MoveSnap");
 		if (checkbox->IsChecked() != moveSnap)
 			checkbox->SetChecked(moveSnap);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarMoveSnap));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarMoveSnap));
 		toolBarToggles.Push(checkbox);
 		checkbox = minitool->CreateToolBarToggle("RotateSnap");
 		if (checkbox->IsChecked() != rotateSnap)
 			checkbox->SetChecked(rotateSnap);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarRotateSnap));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarRotateSnap));
 		toolBarToggles.Push(checkbox);
 		checkbox = minitool->CreateToolBarToggle("ScaleSnap");
 		if (checkbox->IsChecked() != scaleSnap)
 			checkbox->SetChecked(scaleSnap);
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarScaleSnap));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarScaleSnap));
 		toolBarToggles.Push(checkbox);
 
 		e = minitool->CreateGroup("SnapScaleModeGroup", LM_HORIZONTAL);
@@ -722,11 +722,11 @@ namespace Urho3D
 		checkbox = minitool->CreateToolBarToggle("SnapScaleModeGroup", "SnapScaleHalf");
 		if (checkbox->IsChecked() != (snapScaleMode == SNAP_SCALE_HALF))
 			checkbox->SetChecked((snapScaleMode == SNAP_SCALE_HALF));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarSnapScaleModeHalf));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarSnapScaleModeHalf));
 		checkbox = minitool->CreateToolBarToggle("SnapScaleModeGroup", "SnapScaleQuarter");
 		if (checkbox->IsChecked() != (snapScaleMode == SNAP_SCALE_QUARTER))
 			checkbox->SetChecked((snapScaleMode == SNAP_SCALE_QUARTER));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarSnapScaleModeQuarter));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarSnapScaleModeQuarter));
 
 		minitool->CreateToolBarSpacer(4);
 		e = minitool->CreateGroup("PickModeGroup", LM_HORIZONTAL);
@@ -734,23 +734,23 @@ namespace Urho3D
 		checkbox = minitool->CreateToolBarToggle("PickModeGroup", "PickGeometries");
 		if (checkbox->IsChecked() != (pickMode == PICK_GEOMETRIES))
 			checkbox->SetChecked((pickMode == PICK_GEOMETRIES));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarPickModeGeometries));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarPickModeGeometries));
 		checkbox = minitool->CreateToolBarToggle("PickModeGroup", "PickLights");
 		if (checkbox->IsChecked() != (pickMode == PICK_LIGHTS))
 			checkbox->SetChecked((pickMode == PICK_LIGHTS));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarPickModeLights));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarPickModeLights));
 		checkbox = minitool->CreateToolBarToggle("PickModeGroup", "PickZones");
 		if (checkbox->IsChecked() != (pickMode == PICK_ZONES))
 			checkbox->SetChecked((pickMode == PICK_ZONES));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarPickModeZones));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarPickModeZones));
 		checkbox = minitool->CreateToolBarToggle("PickModeGroup", "PickRigidBodies");
 		if (checkbox->IsChecked() != (pickMode == PICK_RIGIDBODIES))
 			checkbox->SetChecked((pickMode == PICK_RIGIDBODIES));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarPickModeRigidBodies));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarPickModeRigidBodies));
 		checkbox = minitool->CreateToolBarToggle("PickModeGroup", "PickUIElements");
 		if (checkbox->IsChecked() != (pickMode == PICK_UI_ELEMENTS))
 			checkbox->SetChecked((pickMode == PICK_UI_ELEMENTS));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarPickModeUIElements));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarPickModeUIElements));
 
 		minitool->CreateToolBarSpacer(4);
 		e = minitool->CreateGroup("FillModeGroup", LM_HORIZONTAL);
@@ -758,15 +758,15 @@ namespace Urho3D
 		checkbox = minitool->CreateToolBarToggle("FillModeGroup", "FillPoint");
 		if (checkbox->IsChecked() != (fillMode == FILL_POINT))
 			checkbox->SetChecked((fillMode == FILL_POINT));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarFillModePoint));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarFillModePoint));
 		checkbox = minitool->CreateToolBarToggle("FillModeGroup", "FillWireFrame");
 		if (checkbox->IsChecked() != (fillMode == FILL_WIREFRAME))
 			checkbox->SetChecked((fillMode == FILL_WIREFRAME));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarFillModeWireFrame));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarFillModeWireFrame));
 		checkbox = minitool->CreateToolBarToggle("FillModeGroup", "FillSolid");
 		if (checkbox->IsChecked() != (fillMode == FILL_SOLID))
 			checkbox->SetChecked((fillMode == FILL_SOLID));
-		SubscribeToEvent(checkbox, E_TOGGLED, HANDLER(EPScene3D, ToolBarFillModeSolid));
+		SubscribeToEvent(checkbox, E_TOGGLED, URHO3D_HANDLER(EPScene3D, ToolBarFillModeSolid));
 
 
 	}
@@ -1281,25 +1281,25 @@ namespace Urho3D
 		else if (action == A_OPENSCENE_VAR)
 		{
 			editor_->CreateFileSelector("Open scene", "Open", "Cancel", editorData_->uiScenePath, editorData_->uiSceneFilters, editorData_->uiSceneFilter);
-			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, HANDLER(EPScene3D, HandleOpenSceneFile));
+			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, URHO3D_HANDLER(EPScene3D, HandleOpenSceneFile));
 		}
 		else if (action == A_SAVESCENE_VAR || action == A_SAVESCENEAS_VAR)
 		{
 			editor_->CreateFileSelector("Save scene as", "Save", "Cancel", editorData_->uiScenePath, editorData_->uiSceneFilters, editorData_->uiSceneFilter);
 			editor_->GetUIFileSelector()->SetFileName(GetFileNameAndExtension(editorData_->GetEditorScene()->GetFileName()));
-			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, HANDLER(EPScene3D, HandleSaveSceneFile));
+			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, URHO3D_HANDLER(EPScene3D, HandleSaveSceneFile));
 		}
 		else if (action == A_LOADNODEASREP_VAR)
 		{
 			instantiateMode = REPLICATED;
 			editor_->CreateFileSelector("Load node", "Load", "Cancel", editorData_->uiNodePath, editorData_->uiSceneFilters, editorData_->uiNodeFilter);
-			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, HANDLER(EPScene3D, HandleLoadNodeFile));
+			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, URHO3D_HANDLER(EPScene3D, HandleLoadNodeFile));
 		}
 		else if (action == A_LOADNODEASLOCAL_VAR)
 		{
 			instantiateMode = LOCAL;
 			editor_->CreateFileSelector("Load node", "Load", "Cancel", editorData_->uiNodePath, editorData_->uiSceneFilters, editorData_->uiNodeFilter);
-			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, HANDLER(EPScene3D, HandleLoadNodeFile));
+			SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, URHO3D_HANDLER(EPScene3D, HandleLoadNodeFile));
 		}
 		else if (action == A_SAVENODEAS_VAR)
 		{
@@ -1307,7 +1307,7 @@ namespace Urho3D
 			{
 				editor_->CreateFileSelector("Save node", "Save", "Cancel", editorData_->uiNodePath, editorData_->uiSceneFilters, editorData_->uiNodeFilter);
 				editor_->GetUIFileSelector()->SetFileName(GetFileNameAndExtension(instantiateFileName));
-				SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, HANDLER(EPScene3D, HandleSaveNodeFile));
+				SubscribeToEvent(editor_->GetUIFileSelector(), E_FILESELECTED, URHO3D_HANDLER(EPScene3D, HandleSaveNodeFile));
 			}
 		}
 		else if (action == A_CREATEREPNODE_VAR)
@@ -1354,7 +1354,7 @@ namespace Urho3D
 				Button* cancelButton = (Button*)messageBox->GetWindow()->GetChild("CancelButton", true);
 				cancelButton->SetVisible(true);
 				cancelButton->SetFocus(true);
-				SubscribeToEvent(messageBox, E_MESSAGEACK, HANDLER(EPScene3D, HandleMessageAcknowledgement));
+				SubscribeToEvent(messageBox, E_MESSAGEACK, URHO3D_HANDLER(EPScene3D, HandleMessageAcknowledgement));
 
 				return false;
 			}
@@ -1427,7 +1427,7 @@ namespace Urho3D
 		// Always load the scene from the filesystem, not from resource paths
 		if (!fileSystem_->FileExists(fileName))
 		{
-			LOGERRORF("No such scene %s", fileName.CString());
+			URHO3D_LOGERRORF("No such scene %s", fileName.CString());
 
 			MessageBox(context_, "No such scene.\n" + fileName);
 			return false;
@@ -1436,7 +1436,7 @@ namespace Urho3D
 		File file(context_);
 		if (!file.Open(fileName, FILE_READ))
 		{
-			LOGERRORF("Could not open file %s", fileName.CString());
+			URHO3D_LOGERRORF("Could not open file %s", fileName.CString());
 
 			MessageBox(context_, "Could not open file.\n" + fileName);
 			return false;
@@ -2422,20 +2422,20 @@ namespace Urho3D
 		cameraZoom = (LineEdit*)settingsWindow->GetChild("Zoom", true);
 		cameraOrthoSize = (LineEdit*)settingsWindow->GetChild("OrthoSize", true);
 
-		SubscribeToEvent(cameraPosX, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraPosY, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraPosZ, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraRotX, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraRotY, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraRotZ, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraZoom, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraOrthoSize, E_TEXTCHANGED, HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
-		SubscribeToEvent(cameraOrthographic, E_TOGGLED, HANDLER(EPScene3DView, HandleOrthographicToggled));
+		SubscribeToEvent(cameraPosX, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraPosY, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraPosZ, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraRotX, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraRotY, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraRotZ, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraZoom, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraOrthoSize, E_TEXTCHANGED, URHO3D_HANDLER(EPScene3DView, HandleSettingsLineEditTextChange));
+		SubscribeToEvent(cameraOrthographic, E_TOGGLED, URHO3D_HANDLER(EPScene3DView, HandleOrthographicToggled));
 
-		SubscribeToEvent(settingsButton, E_RELEASED, HANDLER(EPScene3DView, ToggleViewportSettingsWindow));
-		SubscribeToEvent(settingsWindow->GetChild("ResetCamera", true), E_RELEASED, HANDLER(EPScene3DView, ResetCamera));
-		SubscribeToEvent(settingsWindow->GetChild("CloseButton", true), E_RELEASED, HANDLER(EPScene3DView, CloseViewportSettingsWindow));
-		SubscribeToEvent(settingsWindow->GetChild("Refresh", true), E_RELEASED, HANDLER(EPScene3DView, UpdateSettingsUI));
+		SubscribeToEvent(settingsButton, E_RELEASED, URHO3D_HANDLER(EPScene3DView, ToggleViewportSettingsWindow));
+		SubscribeToEvent(settingsWindow->GetChild("ResetCamera", true), E_RELEASED, URHO3D_HANDLER(EPScene3DView, ResetCamera));
+		SubscribeToEvent(settingsWindow->GetChild("CloseButton", true), E_RELEASED, URHO3D_HANDLER(EPScene3DView, CloseViewportSettingsWindow));
+		SubscribeToEvent(settingsWindow->GetChild("Refresh", true), E_RELEASED, URHO3D_HANDLER(EPScene3DView, UpdateSettingsUI));
 		HandleResize();
 	}
 

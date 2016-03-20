@@ -43,7 +43,7 @@ namespace Urho3D
 
 	class EPScene2DEditor : public Object
 	{
-		OBJECT(EPScene2DEditor);
+		URHO3D_OBJECT(EPScene2DEditor, Object);
 		friend class EPScene2D;
 	public:
 		/// Construct.
@@ -75,7 +75,7 @@ namespace Urho3D
 
 	class EPScene2D : public EditorPlugin
 	{
-		OBJECT(EPScene2D);
+		URHO3D_OBJECT(EPScene2D, EditorPlugin);
 	public:
 		/// Construct.
 		EPScene2D(Context* context);

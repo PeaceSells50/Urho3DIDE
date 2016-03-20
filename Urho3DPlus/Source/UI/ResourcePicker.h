@@ -20,9 +20,10 @@
 // THE SOFTWARE.
 //
 #pragma once
-#include "..\Core\Object.h"
-#include "..\Scene\Serializable.h"
-#include "..\Container\Vector.h"
+
+#include <Urho3d/Core\Object.h>
+#include <Urho3d/Scene\Serializable.h>
+#include <Urho3d/Container\Vector.h>
 
 
 namespace Urho3D
@@ -91,7 +92,7 @@ namespace Urho3D
 
 	class ResourcePickerManager : public Object
 	{
-		OBJECT(ResourcePickerManager);
+		URHO3D_OBJECT(ResourcePickerManager, Object);
 	public:
 		ResourcePickerManager(Context* context);
 		virtual ~ResourcePickerManager();

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Core/Object.h"
+#include <Urho3d/Core/Object.h>
 
 namespace Urho3D
 {
@@ -11,7 +11,7 @@ namespace Urho3D
 
 	class TemplateManager : public Object
 	{
-		OBJECT(TemplateManager);
+		URHO3D_OBJECT(TemplateManager, Object);
 	public:
 		/// Construct.
 		TemplateManager(Context* context);

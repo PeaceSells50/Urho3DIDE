@@ -1,29 +1,29 @@
 #include "EditorView.h"
-#include "../Resource/ResourceCache.h"
-#include "../UI/UI.h"
-#include "../Graphics/Graphics.h"
-#include "../Input/InputEvents.h"
-#include "../UI/Window.h"
-#include "../UI/UIElement.h"
-#include "../UI/UIEvents.h"
-#include "../Scene/Scene.h"
-#include "../UI/View3D.h"
-#include "../Scene/Node.h"
-#include "../Graphics/Camera.h"
-#include "../Graphics/Zone.h"
-#include "../Math/BoundingBox.h"
-#include "../Math/Color.h"
-#include "../Math/Quaternion.h"
-#include "../Graphics/StaticModel.h"
-#include "../Graphics/Model.h"
-#include "../Graphics/Material.h"
-#include "../Graphics/Light.h"
-#include "../Graphics/Octree.h"
-#include "../UI/UIElement.h"
-#include "../Resource/Resource.h"
-#include "../Container/Str.h"
-#include "../UI/FileSelector.h"
-#include "../Resource/XMLFile.h"
+#include "Urho3d/Resource/ResourceCache.h"
+#include "Urho3d/UI/UI.h"
+#include "Urho3d/Graphics/Graphics.h"
+#include "Urho3d/Input/InputEvents.h"
+#include "Urho3d/UI/Window.h"
+#include "Urho3d/UI/UIElement.h"
+#include "Urho3d/UI/UIEvents.h"
+#include "Urho3d/Scene/Scene.h"
+#include "Urho3d/UI/View3D.h"
+#include "Urho3d/Scene/Node.h"
+#include "Urho3d/Graphics/Camera.h"
+#include "Urho3d/Graphics/Zone.h"
+#include "Urho3d/Math/BoundingBox.h"
+#include "Urho3d/Math/Color.h"
+#include "Urho3d/Math/Quaternion.h"
+#include "Urho3d/Graphics/StaticModel.h"
+#include "Urho3d/Graphics/Model.h"
+#include "Urho3d/Graphics/Material.h"
+#include "Urho3d/Graphics/Light.h"
+#include "Urho3d/Graphics/Octree.h"
+#include "Urho3d/UI/UIElement.h"
+#include "Urho3d/Resource/Resource.h"
+#include "Urho3d/Container/Str.h"
+#include "Urho3d/UI/FileSelector.h"
+#include "Urho3d/Resource/XMLFile.h"
 
 #include "UI/HierarchyWindow.h"
 #include "UI/AttributeInspector.h"
@@ -31,7 +31,7 @@
 #include "UI/ToolBarUI.h"
 #include "UI/MiniToolBarUI.h"
 #include "UI/UIUtils.h"
-#include "../Core/CoreEvents.h"
+#include "Urho3d/Core/CoreEvents.h"
 #include "TabWindow.h"
 #include "EditorData.h"
 
@@ -100,8 +100,8 @@ namespace Urho3D
 		rightFrame_->SetFixedHeight(minitoolheight);
 		rightFrame_->SetResizeBorder(IntRect(6, 6, 6, 6));
 		rightFrame_->SetLayoutBorder(IntRect(4, 4, 4, 4));
-		SubscribeToEvent(rightFrame_, E_RESIZED, HANDLER(EditorView, HandlePost));
-		SubscribeToEvent(leftFrame_, E_RESIZED, HANDLER(EditorView, HandlePost));
+		SubscribeToEvent(rightFrame_, E_RESIZED, URHO3D_HANDLER(EditorView, HandlePost));
+		SubscribeToEvent(leftFrame_, E_RESIZED, URHO3D_HANDLER(EditorView, HandlePost));
 
 		minLeftFrameWidth_ = 100;
 		minMiddleFrameWidth_ = 200; /// \todo use minMiddleFrameWidth_

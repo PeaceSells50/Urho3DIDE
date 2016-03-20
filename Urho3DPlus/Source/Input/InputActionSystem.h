@@ -3,17 +3,17 @@
 
 
 
-#include "../Core/Object.h"
-#include "../Core/Context.h"
+#include <Urho3D/Core/Object.h>
+#include <Urho3D/Core/Context.h>
 #include "Macros.h"
 
 namespace Urho3D
 {
 
-	EVENT(E_INPUTACTION, InputAction)
+	URHO3D_EVENT(E_INPUTACTION, InputAction)
 	{
-		PARAM(P_ACTIONID, ActionID);        // StringHash
-		PARAM(P_ISDOWN, IsDown);            // bool
+		URHO3D_PARAM(P_ACTIONID, ActionID);        // StringHash
+		URHO3D_PARAM(P_ISDOWN, IsDown);            // bool
 	}
 
 #define MouseButton_Mask 0x01;
@@ -48,8 +48,8 @@ namespace Urho3D
 
 	class ActionState : public Object
 	{
-		OBJECT(ActionState);
-		BASEOBJECT(ActionState);
+		URHO3D_OBJECT(ActionState, Object);
+//		BASEOBJECT(ActionState);
 		friend class InputActionSystem;
 	public:
 		/// Construct.
@@ -84,7 +84,7 @@ namespace Urho3D
 
 	class InputActionSystem : public Object
 	{
-		OBJECT(InputActionSystem);
+		URHO3D_OBJECT(InputActionSystem, Object);
 	public:
 		/// Construct.
 		InputActionSystem(Context* context);

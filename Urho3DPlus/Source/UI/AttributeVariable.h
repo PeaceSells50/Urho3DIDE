@@ -33,8 +33,8 @@
 
 
 
-#include "../UI/UIElement.h"
-#include "../Core/Attribute.h"
+#include <Urho3d/UI/UIElement.h>
+#include <Urho3d/Core/Attribute.h>
 
 namespace Urho3D
 {
@@ -66,7 +66,7 @@ namespace Urho3D
 
 	class BasicAttributeUI : public UIElement
 	{
-		OBJECT(BasicAttributeUI);
+		URHO3D_OBJECT(BasicAttributeUI, UIElement);
 
 	public:
 		/// Construct.
@@ -105,7 +105,7 @@ namespace Urho3D
 	/// see the Create function to see how to use it 
 	class BoolAttributeUI : public BasicAttributeUI
 	{
-		OBJECT(BoolAttributeUI);
+		URHO3D_OBJECT(BoolAttributeUI, BasicAttributeUI);
 
 	public:
 		/// Construct.
@@ -137,7 +137,7 @@ namespace Urho3D
 	/// see the Create function to see how to use it 
 	class StringAttributeUI : public BasicAttributeUI
 	{
-		OBJECT(BoolAttributeUI);
+		URHO3D_OBJECT(BoolAttributeUI, BasicAttributeUI);
 
 	public:
 		/// Construct.
@@ -170,7 +170,7 @@ namespace Urho3D
 	/// see the Create function to see how to use it 
 	class NumberAttributeUI : public BasicAttributeUI
 	{
-		OBJECT(NumberAttributeUI);
+		URHO3D_OBJECT(NumberAttributeUI, BasicAttributeUI);
 
 	public:
 		/// Construct.
@@ -206,7 +206,7 @@ namespace Urho3D
 	/// see the Create function to see how to use it 
 	class EnumAttributeUI : public BasicAttributeUI
 	{
-		OBJECT(EnumAttributeUI);
+		URHO3D_OBJECT(EnumAttributeUI, BasicAttributeUI);
 
 	public:
 		/// Construct.
@@ -237,7 +237,7 @@ namespace Urho3D
 	/// see the Create function to see how to use it 
 	class ResourceRefAttributeUI : public BasicAttributeUI
 	{
-		OBJECT(ResourceRefAttributeUI);
+		URHO3D_OBJECT(ResourceRefAttributeUI, BasicAttributeUI);
 
 	public:
 		/// Construct.
